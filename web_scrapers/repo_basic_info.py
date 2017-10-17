@@ -1,9 +1,6 @@
 import requests
 from time import sleep
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-import re
-from collections import Counter
 
 """
 Okay, time to let the data flow!
