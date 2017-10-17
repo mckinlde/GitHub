@@ -30,7 +30,7 @@ def get_repo_links(username: str):
     links = soup.findAll(itemprop="name codeRepository")
     for link in links:
         repo_url = urljoin(url, link.get('href'))
-        repo_title = link.text
+        repo_title = link.text #repo titles are coming out funny so let's use RegEx to clean them up
         title = re.sub(r"(\\n\s*)(\w*)", "", repo_title).strip()
         result_list[repo_url] = title
     return result_list

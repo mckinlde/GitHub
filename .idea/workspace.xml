@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_scrapers/user_repos.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" afterPath="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/user_repos.py" afterPath="$PROJECT_DIR$/web_scrapers/user_repos.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="user_repos.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            <state relative-caret-position="137">
+              <caret line="32" column="100" lean-forward="false" selection-start-line="32" selection-start-column="100" selection-end-line="32" selection-end-column="100" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -190,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508276808927</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="user_repos gets links to all the public repos a user owns, requires username">
+      <created>1508279066176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1508279066176</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -223,7 +229,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="get_header_info collects # of watchers, stars, and forks, stored them in a dict called 'info'" />
     <MESSAGE value="renamed repo_commit_history to repo_basic_info" />
-    <option name="LAST_COMMIT_MESSAGE" value="renamed repo_commit_history to repo_basic_info" />
+    <MESSAGE value="user_repos gets links to all the public repos a user owns, requires username" />
+    <option name="LAST_COMMIT_MESSAGE" value="user_repos gets links to all the public repos a user owns, requires username" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -244,8 +251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        <state relative-caret-position="137">
+          <caret line="32" column="100" lean-forward="false" selection-start-line="32" selection-start-column="100" selection-end-line="32" selection-end-column="100" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
