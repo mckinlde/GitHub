@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_scrapers/user_following.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_scrapers/user_followers" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="48" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <caret line="14" column="48" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -26,11 +26,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_following.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user_following.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_scrapers/user_following.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="77">
-              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+              <caret line="24" column="19" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_followers" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web_scrapers/user_followers">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -58,6 +70,7 @@
         <option value="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" />
         <option value="$PROJECT_DIR$/web_scrapers/user_repos.py" />
         <option value="$PROJECT_DIR$/web_scrapers/user_following.py" />
+        <option value="$PROJECT_DIR$/web_scrapers/user_followers" />
       </list>
     </option>
   </component>
@@ -119,7 +132,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.user_following">
+  <component name="RunManager" selected="Python.user_followers">
     <configuration name="repo_commit_history" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -133,6 +146,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="GitHub" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="user_followers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_scrapers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GitHub" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web_scrapers/user_followers" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,16 +201,18 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.repo_commit_history" />
       <item index="1" class="java.lang.String" itemvalue="Python.user_repos" />
       <item index="2" class="java.lang.String" itemvalue="Python.user_following" />
+      <item index="3" class="java.lang.String" itemvalue="Python.user_followers" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.user_following" />
-        <item index="1" class="java.lang.String" itemvalue="Python.user_repos" />
-        <item index="2" class="java.lang.String" itemvalue="Python.repo_commit_history" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.user_followers" />
+        <item index="1" class="java.lang.String" itemvalue="Python.user_following" />
+        <item index="2" class="java.lang.String" itemvalue="Python.user_repos" />
+        <item index="3" class="java.lang.String" itemvalue="Python.repo_commit_history" />
       </list>
     </recent_temporary>
   </component>
@@ -223,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508279139747</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="user_following populates a list of all the usernames a user follows">
+      <created>1508279690814</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1508279690814</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -257,7 +296,8 @@
     <MESSAGE value="get_header_info collects # of watchers, stars, and forks, stored them in a dict called 'info'" />
     <MESSAGE value="renamed repo_commit_history to repo_basic_info" />
     <MESSAGE value="user_repos gets links to all the public repos a user owns, requires username" />
-    <option name="LAST_COMMIT_MESSAGE" value="user_repos gets links to all the public repos a user owns, requires username" />
+    <MESSAGE value="user_following populates a list of all the usernames a user follows" />
+    <option name="LAST_COMMIT_MESSAGE" value="user_following populates a list of all the usernames a user follows" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -279,7 +319,7 @@
     <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="48" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <caret line="14" column="48" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -289,7 +329,17 @@
     <entry file="file://$PROJECT_DIR$/web_scrapers/user_following.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="77">
-          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <caret line="24" column="19" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_scrapers/user_followers">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
