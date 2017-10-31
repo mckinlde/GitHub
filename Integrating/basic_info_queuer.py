@@ -1,14 +1,19 @@
 # RUN -> Input seed user -> get users following -> add to queue
-import web_scrapers
+from Integrating import scraper
+from Integrating import simpleRepo
+from Integrating import simpleUser
 # get seed user
-seed_username = input("Seed Username: ")
-users = [seed_username]
+seed_user = simpleUser
+seed_user.username = input("Seed Username: ")
+seed_user.followers = []
+seed_user.get_followers
 
-for user in users:
-    # get repos created
-    repos = web_scrapers.user_repos.get_repo_links(user)
-    for repo in repos: # asynchronous?
-        info = web_scrapers.repo_basic_info.get_header_info(repo)
-        print(info)
-    users.append(web_scrapers.user_following.get_followed_usernames(user)) #add followed usernames to queue
+
+#for user in users:
+#    # get repos created
+#    repos = scraper.get_repo_links(user)
+#    for repo in repos: # asynchronous?
+#        info = scraper.get_header_info(repo)
+#        print(info)
+#    users.append(scraper.get_followed_usernames(user)) #add followed usernames to queue
 
