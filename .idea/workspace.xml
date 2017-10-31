@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Integrating/scraper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating/simpleUser.py" afterPath="$PROJECT_DIR$/Integrating/simpleUser.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating/scraper.py" afterPath="$PROJECT_DIR$/Integrating/scraper.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="scraper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Integrating/scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+            <state relative-caret-position="165">
+              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -441,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509406741955</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="created scraper class with methods for populating simpleRepo and simpleUser objects">
+      <created>1509414469689</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1509414469689</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -489,7 +495,8 @@
     <MESSAGE value="user_following populates a list of all the usernames a user follows" />
     <MESSAGE value="user_followers populates a list of all the usernames a user is followed by" />
     <MESSAGE value="created simpleRepo and simpleUser classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="created simpleRepo and simpleUser classes" />
+    <MESSAGE value="created scraper class with methods for populating simpleRepo and simpleUser objects" />
+    <option name="LAST_COMMIT_MESSAGE" value="created scraper class with methods for populating simpleRepo and simpleUser objects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -790,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Integrating/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+        <state relative-caret-position="165">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>

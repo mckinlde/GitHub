@@ -9,13 +9,13 @@ import re
 
 class scraper:
     
-    def __init__(self, base_url, following_url_end, follower_url_end, repo_url_end):
+    def __init__(self):
 
-        self.base_url = base_url
-        self.following_url_end = following_url_end
-        self.follower_url_end = follower_url_end
-        self.repo_url_end = repo_url_end
-    
+        self.base_url = "https://github.com/"
+        self.following_url_end = "?tab=following"
+        self.follower_url_end = "?tab=followers"
+        self.repo_url_end = "?tab=repositories"
+
     def retrieve(self, url: str):
         """retrieves content at the specified url"""
         print("*", url)
