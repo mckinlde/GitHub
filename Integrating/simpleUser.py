@@ -1,7 +1,10 @@
-# defines a simple github user class
-
+import requests
+from time import sleep
+from bs4 import BeautifulSoup
 
 class simpleUser:
+    # defines a simple github user class
+    # simpleUser can spit out all of its own values, and populate them by scraping github with BeautifulSoup
     def __init__(self, username, followers, following, repositories):
         self.username = username
         self.followers = followers

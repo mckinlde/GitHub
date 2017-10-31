@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="created">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Integrating/basic_info_queuer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Integrating/simpleRepo.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Integrating/simpleUser.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Integrating/basic_info_gatherer.py" afterPath="$PROJECT_DIR$/Integrating/insert_repo_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/GitHub.iml" afterPath="$PROJECT_DIR$/.idea/GitHub.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Integrating/scraper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" afterPath="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating/simpleUser.py" afterPath="$PROJECT_DIR$/Integrating/simpleUser.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,45 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="user_repos.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="17" column="57" lean-forward="false" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1509063570743" expanded="true" signature="314:318" ph="..." />
-                <marker date="1509063570743" expanded="true" signature="653:657" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="insert_repo_info.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Integrating/insert_repo_info.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic_info_queuer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Integrating/basic_info_queuer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simpleRepo.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="simpleRepo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Integrating/simpleRepo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            <state relative-caret-position="60">
+              <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -67,32 +28,22 @@
       <file leaf-file-name="simpleUser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Integrating/simpleUser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="repo_basic_info.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_scrapers/repo_basic_info.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="28" column="52" lean-forward="false" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_following.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_scrapers/user_following.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="237">
+              <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1509063570743" expanded="true" signature="311:315" ph="..." />
-                <marker date="1509063570743" expanded="true" signature="658:662" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scraper.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Integrating/scraper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,6 +57,14 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>URL_END</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>base_url</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -124,8 +83,9 @@
         <option value="$PROJECT_DIR$/web_scrapers/repo_basic_info.py" />
         <option value="$PROJECT_DIR$/Integrating/basic_info_queuer.py" />
         <option value="$PROJECT_DIR$/Integrating/repo_class.py" />
-        <option value="$PROJECT_DIR$/Integrating/simpleUser.py" />
         <option value="$PROJECT_DIR$/Integrating/simpleRepo.py" />
+        <option value="$PROJECT_DIR$/Integrating/simpleUser.py" />
+        <option value="$PROJECT_DIR$/Integrating/scraper.py" />
       </list>
     </option>
   </component>
@@ -304,7 +264,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.basic_info_queuer">
+  <component name="RunManager" selected="Python.scraper">
     <configuration name="basic_info_queuer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -339,19 +299,19 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="user_followers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scraper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_scrapers" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Integrating" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="GitHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web_scrapers/user_followers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integrating/scraper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -392,18 +352,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.user_repos" />
-      <item index="1" class="java.lang.String" itemvalue="Python.user_followers" />
-      <item index="2" class="java.lang.String" itemvalue="Python.repo_basic_info" />
-      <item index="3" class="java.lang.String" itemvalue="Python.user_following" />
-      <item index="4" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
+      <item index="1" class="java.lang.String" itemvalue="Python.repo_basic_info" />
+      <item index="2" class="java.lang.String" itemvalue="Python.user_following" />
+      <item index="3" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
+      <item index="4" class="java.lang.String" itemvalue="Python.scraper" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
-        <item index="1" class="java.lang.String" itemvalue="Python.repo_basic_info" />
-        <item index="2" class="java.lang.String" itemvalue="Python.user_repos" />
-        <item index="3" class="java.lang.String" itemvalue="Python.user_following" />
-        <item index="4" class="java.lang.String" itemvalue="Python.user_followers" />
+        <item index="0" class="java.lang.String" itemvalue="Python.scraper" />
+        <item index="1" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
+        <item index="2" class="java.lang.String" itemvalue="Python.repo_basic_info" />
+        <item index="3" class="java.lang.String" itemvalue="Python.user_repos" />
+        <item index="4" class="java.lang.String" itemvalue="Python.user_following" />
       </list>
     </recent_temporary>
   </component>
@@ -474,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508280001570</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="created simpleRepo and simpleUser classes">
+      <created>1509406741954</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1509406741955</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -521,7 +488,8 @@
     <MESSAGE value="user_repos gets links to all the public repos a user owns, requires username" />
     <MESSAGE value="user_following populates a list of all the usernames a user follows" />
     <MESSAGE value="user_followers populates a list of all the usernames a user is followed by" />
-    <option name="LAST_COMMIT_MESSAGE" value="user_followers populates a list of all the usernames a user is followed by" />
+    <MESSAGE value="created simpleRepo and simpleUser classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="created simpleRepo and simpleUser classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -559,7 +527,7 @@
         <state relative-caret-position="375">
           <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
           <folding>
-            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -593,7 +561,7 @@
         <state relative-caret-position="375">
           <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
           <folding>
-            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -637,7 +605,7 @@
         <state relative-caret-position="395">
           <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
           <folding>
-            <element signature="e#0#15#0" expanded="false" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -744,48 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/user_followers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/user_following.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1509063570743" expanded="true" signature="311:315" ph="..." />
-            <marker date="1509063570743" expanded="true" signature="658:662" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="17" column="57" lean-forward="false" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1509063570743" expanded="true" signature="314:318" ph="..." />
-            <marker date="1509063570743" expanded="true" signature="653:657" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/repo_basic_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="28" column="52" lean-forward="false" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Integrating/insert_repo_info.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -804,17 +730,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Integrating/simpleUser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="237">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_scrapers/user_following.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1509063570743" expanded="true" signature="311:315" ph="..." />
+            <marker date="1509063570743" expanded="true" signature="658:662" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Integrating/simpleRepo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        <state relative-caret-position="60">
+          <caret line="4" column="65" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_scrapers/user_followers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="32" column="22" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="32" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_scrapers/repo_basic_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="37" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1509063570743" expanded="true" signature="314:318" ph="..." />
+            <marker date="1509063570743" expanded="true" signature="653:657" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integrating/scraper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
