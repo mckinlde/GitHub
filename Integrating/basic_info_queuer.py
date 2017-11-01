@@ -20,14 +20,14 @@ from Integrating import simpleUser
 
 
 
-## 4 globals
+## globals
 BASE_URL = "https://github.com/"
 FOLLOWING_URL_END = "?tab=following"
 FOLLOWER_URL_END = "?tab=followers"
 REPO_URL_END = "?tab=repositories"
 
 
-## 5 functions
+## helper functions
 def retrieve( url: str):
     """retrieves content at the specified url"""
     print("*", url)
@@ -37,7 +37,7 @@ def retrieve( url: str):
     return soup
 
 
-def get_followed_usernames( username: str):
+def get_follower_usernames( username: str):
     # gather all the usernames a user follows
 
     result_list = []  # we'll store them in a list
@@ -106,50 +106,65 @@ def get_username_reponame_from_url(url: str):
     return [username, reponame]
 
 
-def populate_user_repos(user: simpleUser):
-    for repo in user.repositories:
-        box = simpleRepo
-        box.url = repo
-        names = get_username_reponame_from_url(repo)
-        box.name = names[1]
-        box.owner = names[0]
-        temp = get_header_info(box.url)
-        box.watching = temp[0]
-        box.stars = temp[1]
-        box.forks = temp[2]
-        # Test
-        # print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
-        #       % (box.url, box.name, box.owner, box.watching, box.stars, box.forks))
+def populate_repo_from_url(url: str):
+    box = simpleRepo
+    box.url = url
+    names = get_username_reponame_from_url(url)
+    box.name = names[1]
+    box.owner = names[0]
+    temp = get_header_info(box.url)
+    box.watching = temp[0]
+    box.stars = temp[1]
+    box.forks = temp[2]
+    # Test
+    # print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
+    #       % (box.url, box.name, box.owner, box.watching, box.stars, box.forks))
+    return box
 
 
+def populate_simpleUser_from_username(username: str):
+    user = simpleUser
+    user.username = username
+    user.followers = get_follower_usernames(user.username)
+    user.following = get_following_usernames(user.username)
+    user.repos = get_repo_links(user.username)
+    # Test
+    # print('user.username: %s\nuser.followers: %s\nuser.following: %s\nuser.repos: %s'
+    #       % (user.username, user.followers, user.following, user.repos))
+    return user
+# Test statements
+
+
+
+
+def extend_user_list_by_following(seed_user: simpleUser, user_list: []):
+    for user in seed_user.following:
+        if user not in user_list:
+            user_list.append(user)
+    return user_list
 
 # get seed user
-seed_user = simpleUser
-seed_user.username = ('mckinlde')
-seed_user.followers = get_followed_usernames(seed_user.username)
-seed_user.following = get_following_usernames(seed_user.username)
-seed_user.repositories = get_repo_links(seed_user.username)
-
-# Test statements
-# print('seed_user.username: ')
-# print(seed_user.username)
-# print('seed_user.following: ')
-# print(seed_user.following)
-# print('seed_user.followers: ')
-# print(seed_user.followers)
-# print('seed_user.repositories: ')
-# print(seed_user.repositories)
+user = simpleUser
+user = populate_simpleUser_from_username('mckinlde')
+print('user.username: %s\nuser.following: %s\nuser.followers%s\nuser.repositories: %s\n'
+      % (user.username, user.following, user.followers, user.repositories))
 
 print('GATE 1')
 
-print(get_username_reponame_from_url(seed_user.repositories[0]))
+for item in seed_user.repositories:
+    box = simpleRepo
+    box = populate_repo_from_url(item)
+    print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
+          % (box.url, box.name, box.owner, box.watching, box.stars, box.forks))
+
 
 print('GATE 2')
 
 
+
 print('GATE 3')
 
-populate_user_repos(seed_user)
+print(extend_user_list_by_following(seed_user, [seed_user.username]))
 
 #for user in users:
 #    # get repos created
