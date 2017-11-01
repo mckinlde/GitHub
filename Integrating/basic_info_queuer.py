@@ -1,5 +1,6 @@
 # RUN -> Input seed user -> get users following -> add to queue
 # imports for functions
+import string
 import requests
 from time import sleep
 from bs4 import BeautifulSoup
@@ -82,20 +83,17 @@ def get_repo_links(username: str):
     return result_list
 
 
-def get_header_info(username: str, reponame: str):
+def get_header_info(url: str):
     #gather all the basic information obtainable from the repo header, # of people watching, # stars, # forks
 
-    info = [] # we'll store out info in an array
-    url = BASE_URL + '/' + username + '/' + reponame
+    info = [] # we'll store our info as a list
     soup = retrieve(url)
     #as of 10/17/2017 all this info is held in social-count tags
     tags = soup.findAll("a", "social-count")
     #watching = tags[0]['aria-label'] #aria-label contains string with # we want
-    info['watching'] = tags[0]['aria-label'][0:tags[0]['aria-label'].find(" ")] # add just the number to our dictionary
-    info['stars'] = tags[1]['aria-label'][0:tags[1]['aria-label'].find(" ")]
-    info['forks'] = tags[2]['aria-label'][0:tags[2]['aria-label'].find(" ")]
-
-    return info
+    info.append(tags[0]['aria-label'][0:tags[0]['aria-label'].find(" ")]) # add just the numbers to our list
+    info.append(tags[1]['aria-label'][0:tags[1]['aria-label'].find(" ")])
+    info.append(tags[2]['aria-label'][0:tags[2]['aria-label'].find(" ")])
 
 # get seed user
 seed_user = simpleUser
@@ -114,9 +112,19 @@ seed_user.repositories = get_repo_links(seed_user.username)
 print('seed_user.repositories: ')
 print(seed_user.repositories)
 
-#for repo in seed_user.repositories:
-#    box = simpleRepo
-#    box.url = repo.url
+# 'https://github.com/USERNAME/REPONAME'
+past_username = seed_user.repositories[0].rfind('/', 19) + 1
+
+for repo in seed_user.repositories:
+    box = simpleRepo
+    box.url = repo
+    box.name = repo[past_username:]
+    # print(box.name)
+    box.owner = seed_user.username
+    temp = get_header_info(repo)
+    box.watching = temp[0]
+    box.stars = temp[1]
+    box.forks = temp[2]
 
 
 
