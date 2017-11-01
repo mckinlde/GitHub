@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/GitHub.iml" afterPath="$PROJECT_DIR$/.idea/GitHub.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating/basic_info_queuer.py" afterPath="$PROJECT_DIR$/Integrating/basic_info_queuer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Integrating/insert_repo_info_to_SQL.py" afterPath="$PROJECT_DIR$/Integrating/insert_repo_info_to_SQL.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="simpleRepo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Integrating/simpleRepo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="65" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="65" />
+            <state relative-caret-position="75">
+              <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -29,8 +28,8 @@
       <file leaf-file-name="simpleUser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Integrating/simpleUser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+            <state relative-caret-position="165">
+              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="40" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -41,17 +40,41 @@
       <file leaf-file-name="basic_info_queuer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Integrating/basic_info_queuer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state relative-caret-position="67">
+              <caret line="146" column="48" lean-forward="false" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
               <folding>
-                <element signature="e#906#1204#0" expanded="false" />
-                <element signature="e#1255#1642#0" expanded="false" />
-                <element signature="e#1694#2089#0" expanded="false" />
-                <element signature="e#2131#2774#0" expanded="false" />
-                <element signature="e#2812#3454#0" expanded="false" />
-                <element signature="e#3507#3740#0" expanded="false" />
-                <element signature="e#3790#4311#0" expanded="false" />
-                <element signature="e#4580#4597#0" expanded="false" />
+                <element signature="e#88#101#0" expanded="true" />
+                <element signature="e#957#1255#0" expanded="false" />
+                <element signature="e#1306#1693#0" expanded="false" />
+                <element signature="e#1745#2140#0" expanded="false" />
+                <element signature="e#2182#2825#0" expanded="false" />
+                <element signature="e#2863#3505#0" expanded="false" />
+                <element signature="e#3558#3791#0" expanded="false" />
+                <element signature="e#3836#4287#0" expanded="false" />
+                <element signature="e#4348#4764#0" expanded="false" />
+                <element signature="e#4844#4966#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="331" column="0" lean-forward="false" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insert_repo_info_to_SQL.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Integrating/insert_repo_info_to_SQL.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,12 +96,15 @@
       <find>base_url</find>
       <find>following_url_end</find>
       <find>self.</find>
+      <find>user</find>
     </findStrings>
     <replaceStrings>
       <replace>base_url</replace>
       <replace>BASE_URL</replace>
       <replace>FOLLOWing_URL_END</replace>
       <replace>box.</replace>
+      <replace>seed_</replace>
+      <replace>seed_user</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -99,8 +125,9 @@
         <option value="$PROJECT_DIR$/Integrating/repo_class.py" />
         <option value="$PROJECT_DIR$/Integrating/simpleRepo.py" />
         <option value="$PROJECT_DIR$/Integrating/scraper.py" />
-        <option value="$PROJECT_DIR$/Integrating/simpleUser.py" />
         <option value="$PROJECT_DIR$/Integrating/MASTER_BLASTER.py" />
+        <option value="$PROJECT_DIR$/Integrating/simpleUser.py" />
+        <option value="$PROJECT_DIR$/Integrating/insert_repo_info_to_SQL.py" />
         <option value="$PROJECT_DIR$/Integrating/basic_info_queuer.py" />
       </list>
     </option>
@@ -5038,7 +5065,21 @@
       <option name="project" value="LOCAL" />
       <updated>1509520650859</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Helper functions to populate simpleRepo objects for a simpleUser object written">
+      <created>1509561976937</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1509561976937</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Broke Everything">
+      <created>1509566246949</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1509566246949</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -5048,12 +5089,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20207743" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38932496" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39717427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39872408" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39717427" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -5089,29 +5130,24 @@
     <MESSAGE value="created scraper class with methods for populating simpleRepo and simpleUser objects" />
     <MESSAGE value="edited urls in scraper to be static" />
     <MESSAGE value="## Okay new plan, I'm going to put function definitions right here in this script&#10;## simpleUser and simpleRepo objects will just be used to hold data&#10;## This script will create users and repos, populate their fields, and add them to the DB&#10;## The DB will hold a USERS table and a REPOS table, with a 1-to-many relation based on ownership&#10;## In the future I can add relations based on social network" />
-    <option name="LAST_COMMIT_MESSAGE" value="## Okay new plan, I'm going to put function definitions right here in this script&#10;## simpleUser and simpleRepo objects will just be used to hold data&#10;## This script will create users and repos, populate their fields, and add them to the DB&#10;## The DB will hold a USERS table and a REPOS table, with a 1-to-many relation based on ownership&#10;## In the future I can add relations based on social network" />
+    <MESSAGE value="Helper functions to populate simpleRepo objects for a simpleUser object written" />
+    <MESSAGE value="Broke Everything" />
+    <option name="LAST_COMMIT_MESSAGE" value="Broke Everything" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Integrating/basic_info_queuer.py</url>
+          <line>193</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web_scrapers/repo_contributors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="99" lean-forward="false" selection-start-line="19" selection-start-column="99" selection-end-line="19" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/repo_basic_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -5325,6 +5361,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -5394,13 +5433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Integrating/insert_repo_info_to_SQL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/user_repos.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -5413,24 +5445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Integrating/simpleUser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Integrating/simpleRepo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="65" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5451,19 +5465,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/OpenSSL/SSL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="1624" column="0" lean-forward="false" selection-start-line="1624" selection-start-column="0" selection-end-line="1624" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integrating/simpleUser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integrating/simpleRepo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integrating/insert_repo_info_to_SQL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="331" column="0" lean-forward="false" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Integrating/basic_info_queuer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+        <state relative-caret-position="67">
+          <caret line="146" column="48" lean-forward="false" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
           <folding>
-            <element signature="e#906#1204#0" expanded="false" />
-            <element signature="e#1255#1642#0" expanded="false" />
-            <element signature="e#1694#2089#0" expanded="false" />
-            <element signature="e#2131#2774#0" expanded="false" />
-            <element signature="e#2812#3454#0" expanded="false" />
-            <element signature="e#3507#3740#0" expanded="false" />
-            <element signature="e#3790#4311#0" expanded="false" />
-            <element signature="e#4580#4597#0" expanded="false" />
+            <element signature="e#88#101#0" expanded="true" />
+            <element signature="e#957#1255#0" expanded="false" />
+            <element signature="e#1306#1693#0" expanded="false" />
+            <element signature="e#1745#2140#0" expanded="false" />
+            <element signature="e#2182#2825#0" expanded="false" />
+            <element signature="e#2863#3505#0" expanded="false" />
+            <element signature="e#3558#3791#0" expanded="false" />
+            <element signature="e#3836#4287#0" expanded="false" />
+            <element signature="e#4348#4764#0" expanded="false" />
+            <element signature="e#4844#4966#0" expanded="false" />
           </folding>
         </state>
       </provider>

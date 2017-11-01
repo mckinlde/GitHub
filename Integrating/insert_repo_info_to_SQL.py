@@ -1,11 +1,14 @@
 import mysql.connector
 import random
+from Integrating import simpleRepo
+from Integrating import simpleUser
 
 connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo", passwd="demo", db="semdemo")
 db = connection.cursor(prepared=True)
 
+
 db.execute("""
-        CREATE TABLE IF NOT EXISTS BASIC_GITHUB (
+        CREATE TABLE IF NOT EXISTS REPOSITORIES (
             mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
             url VARCHAR(256) NOT NULL DEFAULT '',
             repo_name VARCHAR(256) NOT NULL DEFAULT '',
@@ -16,9 +19,9 @@ db.execute("""
         )""")
 
 
-def insert_repo_info(url: str, repo_name: str, username: str, watchers: int, stars: int, forks: int):
+def insert_repo_info(repo: simpleRepo):
     db.execute("insert into BASIC_GITHUB(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
-               [url, repo_name, username, watchers, stars, forks])
+               [repo.url, repo.name, repo.owner, repo.watchers, repo.stars, repo.forks])
 
 
 connection.commit()  # required, as mysql generally doesn't autocommit

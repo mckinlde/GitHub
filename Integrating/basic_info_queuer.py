@@ -10,6 +10,7 @@ import re
 # classes I made
 from Integrating import simpleRepo
 from Integrating import simpleUser
+from Integrating import insert_repo_info_to_SQL
 
 
 ## Okay new plan, I'm going to put function definitions right here in this script
@@ -127,14 +128,11 @@ def populate_simpleUser_from_username(username: str):
     user.username = username
     user.followers = get_follower_usernames(user.username)
     user.following = get_following_usernames(user.username)
-    user.repos = get_repo_links(user.username)
+    user.repositories = get_repo_links(user.username)
     # Test
     # print('user.username: %s\nuser.followers: %s\nuser.following: %s\nuser.repos: %s'
-    #       % (user.username, user.followers, user.following, user.repos))
+    #       % (user.username, user.followers, user.following, user.repositories))
     return user
-# Test statements
-
-
 
 
 def extend_user_list_by_following(seed_user: simpleUser, user_list: []):
@@ -143,24 +141,61 @@ def extend_user_list_by_following(seed_user: simpleUser, user_list: []):
             user_list.append(user)
     return user_list
 
+
+def populate_user_repository_list(seed_user: simpleUser):
+    # get repos, populate
+    result_list = [len(seed_user.repositories)+1]
+    for i in range(0, len(seed_user.repositories)):
+        temp = populate_repo_from_url(seed_user.repositories[i])
+        result_list[i] = temp
+        # Test
+        # print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
+        #       % (repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks))
+    return result_list
+
+
 # get seed user
-user = simpleUser
-user = populate_simpleUser_from_username('mckinlde')
-print('user.username: %s\nuser.following: %s\nuser.followers%s\nuser.repositories: %s\n'
-      % (user.username, user.following, user.followers, user.repositories))
+seed_user = simpleUser
+seed_user = populate_simpleUser_from_username('mckinlde')
+print('seed_user.username: %s\nseed_user.followers: %s\nseed_user.following: %s\nseed_user.repos: %s'
+      % (seed_user.username, seed_user.followers, seed_user.following, seed_user.repositories))
+
 
 print('GATE 1')
 
-for item in seed_user.repositories:
-    box = simpleRepo
-    box = populate_repo_from_url(item)
-    print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
-          % (box.url, box.name, box.owner, box.watching, box.stars, box.forks))
-
+user_repos = populate_user_repository_list(seed_user)
+#print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
+#      % (user_repos[1].url, user_repos[1].name, user_repos[1].owner, user_repos[1].watching, user_repos[1].stars, user_repos[0].forks))
 
 print('GATE 2')
+import mysql.connector
+
+connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo", passwd="demo", db="semdemo")
+db = connection.cursor(prepared=True)
 
 
+db.execute("""
+        CREATE TABLE IF NOT EXISTS REPOSITORIES (
+            mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+            url VARCHAR(256) NOT NULL DEFAULT '',
+            repo_name VARCHAR(256) NOT NULL DEFAULT '',
+            username VARCHAR(256) NOT NULL DEFAULT '',
+            watchers INT(10) UNSIGNED NULL,
+            stars INT(10) UNSIGNED NULL,
+            forks INT(10) UNSIGNED NULL
+        )""")
+
+
+def insert_repo_info(repo: simpleRepo):
+    db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
+               [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
+
+
+for repo in user_repos:
+    print('flag')
+    db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
+               [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
+    connection.commit()
 
 print('GATE 3')
 
