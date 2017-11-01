@@ -94,6 +94,34 @@ def get_header_info(url: str):
     info.append(tags[0]['aria-label'][0:tags[0]['aria-label'].find(" ")]) # add just the numbers to our list
     info.append(tags[1]['aria-label'][0:tags[1]['aria-label'].find(" ")])
     info.append(tags[2]['aria-label'][0:tags[2]['aria-label'].find(" ")])
+    return info
+
+
+def get_username_reponame_from_url(url: str):
+    # 'https://github.com/USERNAME/REPONAME'
+    #                  18^^19      ^past_username+1
+    past_username = url.rfind('/')
+    username = url[19:past_username]
+    reponame = url[past_username+1:]
+    return [username, reponame]
+
+
+def populate_user_repos(user: simpleUser):
+    for repo in user.repositories:
+        box = simpleRepo
+        box.url = repo
+        names = get_username_reponame_from_url(repo)
+        box.name = names[1]
+        box.owner = names[0]
+        temp = get_header_info(box.url)
+        box.watching = temp[0]
+        box.stars = temp[1]
+        box.forks = temp[2]
+        # Test
+        # print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
+        #       % (box.url, box.name, box.owner, box.watching, box.stars, box.forks))
+
+
 
 # get seed user
 seed_user = simpleUser
@@ -109,25 +137,19 @@ seed_user.repositories = get_repo_links(seed_user.username)
 # print(seed_user.following)
 # print('seed_user.followers: ')
 # print(seed_user.followers)
-print('seed_user.repositories: ')
-print(seed_user.repositories)
+# print('seed_user.repositories: ')
+# print(seed_user.repositories)
 
-# 'https://github.com/USERNAME/REPONAME'
-past_username = seed_user.repositories[0].rfind('/', 19) + 1
+print('GATE 1')
 
-for repo in seed_user.repositories:
-    box = simpleRepo
-    box.url = repo
-    box.name = repo[past_username:]
-    # print(box.name)
-    box.owner = seed_user.username
-    temp = get_header_info(repo)
-    box.watching = temp[0]
-    box.stars = temp[1]
-    box.forks = temp[2]
+print(get_username_reponame_from_url(seed_user.repositories[0]))
+
+print('GATE 2')
 
 
+print('GATE 3')
 
+populate_user_repos(seed_user)
 
 #for user in users:
 #    # get repos created
