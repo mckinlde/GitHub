@@ -5,8 +5,7 @@ from bs4 import BeautifulSoup
 """
 Okay, time to let the data flow!
 
-I'm going to use BeautifulSoup because it'll be more adaptable to future projects, though I admit GitHub's own GraphQL
-is a very useful selection of API.
+I'm going to use BeautifulSoup because it'll be more adaptable to future projects
 
 Eventually I'd like to be able to use this data to predict how many pull requests a repository will have.  So we'll be
 scraping data from the repository pages themselves.  This means the BASE_URL will have to be changed for each new repo
