@@ -7,29 +7,38 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import re
 
-# classes I made
-from Integrating import simpleRepo
-from Integrating import simpleUser
-from Integrating import insert_repo_info_to_SQL
-
-
-## Okay new plan, I'm going to put function definitions right here in this script
-## simpleUser and simpleRepo objects will just be used to hold data
-## This script will create users and repos, populate their fields, and add them to the DB
-## The DB will hold a USERS table and a REPOS table, with a 1-to-many relation based on ownership
-## In the future I can add relations based on social network
-
-
-
-## globals
+# globals
 BASE_URL = "https://github.com/"
 FOLLOWING_URL_END = "?tab=following"
 FOLLOWER_URL_END = "?tab=followers"
 REPO_URL_END = "?tab=repositories"
 
 
+# classes
+class simpleRepo:
+    def __init__(self, url, name, owner, watching, stars, forks):
+        self.url = url or ''
+        self.name = name or ''
+        self.owner = owner or ''
+        self.watching = watching or ''
+        self.stars = stars or ''
+        self.forks = forks or ''
+
+
+class simpleUser:
+    # defines a simple github user class
+    # simpleUser can spit out all of its own values, and populate them by scraping github with BeautifulSoup
+    def __init__(self, username, followers, following, repositories):
+        self.username = username or ''
+        self.followers = followers or []
+        self.following = following or []
+        self.repositories = repositories or []
+
 ## helper functions
-def retrieve( url: str):
+
+
+
+def retrieve(url: str):
     """retrieves content at the specified url"""
     print("*", url)
     sleep(1)  # Play nice with GitHub's Bandwidth
@@ -108,7 +117,7 @@ def get_username_reponame_from_url(url: str):
 
 
 def populate_repo_from_url(url: str):
-    box = simpleRepo
+    box = simpleRepo('', '', '', '', '', '')
     box.url = url
     names = get_username_reponame_from_url(url)
     box.name = names[1]
@@ -124,7 +133,7 @@ def populate_repo_from_url(url: str):
 
 
 def populate_simpleUser_from_username(username: str):
-    user = simpleUser
+    user = simpleUser('', [], [], [])
     user.username = username
     user.followers = get_follower_usernames(user.username)
     user.following = get_following_usernames(user.username)
@@ -133,6 +142,10 @@ def populate_simpleUser_from_username(username: str):
     # print('user.username: %s\nuser.followers: %s\nuser.following: %s\nuser.repos: %s'
     #       % (user.username, user.followers, user.following, user.repositories))
     return user
+
+def print_simpleUser_attributes(user: simpleUser):
+    print('user.username: %s\nuser.followers: %s\nuser.following: %s\nuser.repos: %s'
+          % (user.username, user.followers, user.following, user.repositories))
 
 
 def extend_user_list_by_following(seed_user: simpleUser, user_list: []):
@@ -144,62 +157,65 @@ def extend_user_list_by_following(seed_user: simpleUser, user_list: []):
 
 def populate_user_repository_list(seed_user: simpleUser):
     # get repos, populate
-    result_list = [len(seed_user.repositories)+1]
-    for i in range(0, len(seed_user.repositories)):
-        temp = populate_repo_from_url(seed_user.repositories[i])
-        result_list[i] = temp
+    result_list = list()
+    #reference to a module instead of creating a new instance of the thing
+    for item in seed_user.repositories:
+        newRepo = populate_repo_from_url(item)
+        result_list.append(newRepo)
         # Test
         # print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
         #       % (repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks))
     return result_list
 
 
-# get seed user
-seed_user = simpleUser
-seed_user = populate_simpleUser_from_username('mckinlde')
-print('seed_user.username: %s\nseed_user.followers: %s\nseed_user.following: %s\nseed_user.repos: %s'
-      % (seed_user.username, seed_user.followers, seed_user.following, seed_user.repositories))
+#print('seed_user.username: %s\nseed_user.followers: %s\nseed_user.following: %s\nseed_user.repos: %s'
+#      % (seed_user.get_username, seed_user.get_followers, seed_user.get_following, seed_user.get_repositories))
 
+seed_user = simpleUser('', [], [], [])
+seed_user = populate_simpleUser_from_username(input('input seed username: '))
+print_simpleUser_attributes(seed_user)
 
 print('GATE 1')
 
 user_repos = populate_user_repository_list(seed_user)
+for item in user_repos:
+    print(item.name)
 #print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
 #      % (user_repos[1].url, user_repos[1].name, user_repos[1].owner, user_repos[1].watching, user_repos[1].stars, user_repos[0].forks))
-
-print('GATE 2')
-import mysql.connector
-
-connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo", passwd="demo", db="semdemo")
-db = connection.cursor(prepared=True)
-
-
-db.execute("""
-        CREATE TABLE IF NOT EXISTS REPOSITORIES (
-            mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
-            url VARCHAR(256) NOT NULL DEFAULT '',
-            repo_name VARCHAR(256) NOT NULL DEFAULT '',
-            username VARCHAR(256) NOT NULL DEFAULT '',
-            watchers INT(10) UNSIGNED NULL,
-            stars INT(10) UNSIGNED NULL,
-            forks INT(10) UNSIGNED NULL
-        )""")
-
-
-def insert_repo_info(repo: simpleRepo):
-    db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
-               [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
-
-
-for repo in user_repos:
-    print('flag')
-    db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
-               [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
-    connection.commit()
-
-print('GATE 3')
-
-print(extend_user_list_by_following(seed_user, [seed_user.username]))
+#
+# print('GATE 2')
+# import mysql.connector
+#
+# connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo", passwd="demo", db="semdemo")
+# db = connection.cursor(prepared=True)
+#
+#
+# db.execute("""
+#         CREATE TABLE IF NOT EXISTS REPOSITORIES (
+#             mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+#             url VARCHAR(256) NOT NULL DEFAULT '',
+#             repo_name VARCHAR(256) NOT NULL DEFAULT '',
+#             username VARCHAR(256) NOT NULL DEFAULT '',
+#             watchers INT(10) UNSIGNED NULL,
+#             stars INT(10) UNSIGNED NULL,
+#             forks INT(10) UNSIGNED NULL
+#         )""")
+#
+#
+# def insert_repo_info(repo: simpleRepo):
+#     db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
+#                [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
+#
+#
+# for repo in user_repos:
+#     print('flag')
+#     db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
+#                [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
+#     connection.commit()
+#
+# print('GATE 3')
+#
+# print(extend_user_list_by_following(seed_user, [seed_user.username]))
 
 #for user in users:
 #    # get repos created
