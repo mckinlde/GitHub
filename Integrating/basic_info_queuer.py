@@ -6,6 +6,7 @@ from time import sleep
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import re
+import mysql.connector
 
 # globals
 BASE_URL = "https://github.com/"
@@ -168,8 +169,17 @@ def populate_user_repository_list(seed_user: simpleUser):
     return result_list
 
 
+def insert_repo_info(repo: simpleRepo):
+    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks) values(?,?,?,?,?)",
+               [repo.url, repo.name, repo.watching, repo.stars, repo.forks])
+    connection.commit()
+
+
 #print('seed_user.username: %s\nseed_user.followers: %s\nseed_user.following: %s\nseed_user.repos: %s'
 #      % (seed_user.get_username, seed_user.get_followers, seed_user.get_following, seed_user.get_repositories))
+
+connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo", passwd="demo", db="semdemo")
+db = connection.cursor(prepared=True)
 
 seed_user = simpleUser('', [], [], [])
 seed_user = populate_simpleUser_from_username(input('input seed username: '))
@@ -177,21 +187,64 @@ print_simpleUser_attributes(seed_user)
 
 print('GATE 1: populated seed_user')
 
-repo_list = populate_user_repository_list(seed_user)
+#seed_repo_list = populate_user_repository_list(seed_user)
+
+db.execute("""
+        CREATE TABLE IF NOT EXISTS REPOSITORIES (
+            url VARCHAR(256) NOT NULL PRIMARY KEY,
+            repo_name VARCHAR(256) NOT NULL DEFAULT '',
+            watchers INT(10) UNSIGNED NULL,
+            stars INT(10) UNSIGNED NULL,
+            forks INT(10) UNSIGNED NULL
+        )""")
+
+
+db.execute("""
+        CREATE TABLE IF NOT EXISTS FOLLOWS (
+            mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+            username_following VARCHAR(256) NOT NULL DEFAULT '',
+            username_followed VARCHAR(256) NOT NULL DEFAULT ''
+        )""")
+
+db.execute("""
+        CREATE TABLE IF NOT EXISTS OWNS (
+            username VARCHAR(256) NOT NULL DEFAULT '',
+            url VARCHAR(256) NOT NULL PRIMARY KEY
+        )""")
+
 
 print('GATE 2: populated seed_user\'s repository data, seed_user.repositories is a list of url strings'
       '\nrepo_list is a list of simpleRepo objects')
 
-# TODO: Input seed_user and seed_user's repositories to DB
+# Input seed_user's repositories (info and owner relationshp) to DB
+# nevermind don't do this because it'll get caught later
+#for repo in seed_repo_list:
+#    insert_repo_info(repo)
+#    db.execute("insert into OWNS(username, url) values(?,?)", [seed_user.username, repo.url])
 
 user_list = seed_user.following
+# Input seed_user's follow relationships to DB
+# yeah same don't do this primary key goof
+#for user in user_list:
+#    db.execute("insert into FOLLOWS(username_following, username_followed) values(?,?)",[seed_user.username, user])
 
 
 for user in user_list:
-    user = populate_simpleUser_from_username(user) # this will only be populated for this iter of loop
-    repo_list = populate_user_repository_list(user)
-    # TODO: Input current user and repos to DB
-    user_list.append(user.following)
+    tempPopulatedUser = populate_simpleUser_from_username(user) # this will only be populated for this iter of loop
+    #print_simpleUser_attributes(tempPopulatedUser)
+    for followedUser in tempPopulatedUser.following:
+        db.execute("insert into FOLLOWS(username_following, username_followed) values(?,?)",
+                   [tempPopulatedUser.username, followedUser])
+        connection.commit()
+    for ownedRepo in tempPopulatedUser.repositories:
+        db.execute("insert into OWNS(username, url) values(?,?)", [tempPopulatedUser.username, ownedRepo])
+        connection.commit()
+
+    repo_list = populate_user_repository_list(tempPopulatedUser)
+    for tempRepo in repo_list:
+        insert_repo_info(tempRepo)
+    #print(user_list)
+    user_list = extend_user_list_by_following(tempPopulatedUser, user_list)
 
 
 #print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
@@ -200,8 +253,7 @@ for user in user_list:
 # print('GATE 2')
 # import mysql.connector
 #
-# connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo", passwd="demo", db="semdemo")
-# db = connection.cursor(prepared=True)
+#
 #
 #
 # db.execute("""
@@ -226,16 +278,4 @@ for user in user_list:
 #     db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
 #                [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
 #     connection.commit()
-#
-# print('GATE 3')
-#
-# print(extend_user_list_by_following(seed_user, [seed_user.username]))
-
-#for user in users:
-#    # get repos created
-#    repos = scraper.get_repo_links(user)
-#    for repo in repos: # asynchronous?
-#        info = scraper.get_header_info(repo)
-#        print(info)
-#    users.append(scraper.get_followed_usernames(user)) #add followed usernames to queue
 
