@@ -175,11 +175,25 @@ seed_user = simpleUser('', [], [], [])
 seed_user = populate_simpleUser_from_username(input('input seed username: '))
 print_simpleUser_attributes(seed_user)
 
-print('GATE 1')
+print('GATE 1: populated seed_user')
 
-user_repos = populate_user_repository_list(seed_user)
-for item in user_repos:
-    print(item.name)
+repo_list = populate_user_repository_list(seed_user)
+
+print('GATE 2: populated seed_user\'s repository data, seed_user.repositories is a list of url strings'
+      '\nrepo_list is a list of simpleRepo objects')
+
+# TODO: Input seed_user and seed_user's repositories to DB
+
+user_list = seed_user.following
+
+
+for user in user_list:
+    user = populate_simpleUser_from_username(user) # this will only be populated for this iter of loop
+    repo_list = populate_user_repository_list(user)
+    # TODO: Input current user and repos to DB
+    user_list.append(user.following)
+
+
 #print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
 #      % (user_repos[1].url, user_repos[1].name, user_repos[1].owner, user_repos[1].watching, user_repos[1].stars, user_repos[0].forks))
 #
