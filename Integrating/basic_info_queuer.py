@@ -35,6 +35,22 @@ class simpleUser:
         self.following = following or []
         self.repositories = repositories or []
 
+
+class superUser:
+    #superuser is for statistics that are calculated, not scraped
+    #functions should assume a simpleuser object with repositories as a list
+    #of populated repository objects
+    def __init(self, username, total_followers, total_following, total_repositories, total_forks, total_stars, total_watchers):
+        self.username = username or ''
+        self.total_followers = total_followers or ''
+        self.total_following = total_following or ''
+        self.total_repositories = total_repositories or ''
+        self.total_forks = total_forks or ''
+        self.total_stars = total_stars or ''
+        self.total_watchers = total_watchers or ''
+
+
+
 ## helper functions
 
 
@@ -170,9 +186,41 @@ def populate_user_repository_list(seed_user: simpleUser):
 
 
 def insert_repo_info(repo: simpleRepo):
-    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks) values(?,?,?,?,?)",
-               [repo.url, repo.name, repo.watching, repo.stars, repo.forks])
+    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks, owner) values(?,?,?,?,?,?)",
+               [repo.url, repo.name, repo.watching, repo.stars, repo.forks, repo.owner])
     connection.commit()
+
+
+def populate_superuser_statistics(user: simpleUser):
+    myHero= superUser()
+    myHero.username = user.username
+    myHero.total_followers = len(user.followers)
+    myHero.total_following = len(user.following)
+    myHero.total_repositories = len(user.repositories)
+    ## ToDo: Make this less brutal
+    counter = 0
+    for repo in user.repositories:
+        counter = counter + repo.forks
+    myHero.total_forks = counter
+    counter = 0
+    for repo in user.repositories:
+        counter = counter + repo.stars
+    myHero.total_stars = counter
+    counter = 0
+    for repo in user.repositories:
+        counter = counter + repo.watching
+    myHero.total_watchers = counter
+    return myHero
+
+
+def insert_superuser(myHero: superUser):
+    db.execute("insert into superUsers(username, num_followers, num_following, "
+               "num_repos, num_forks, num_stars, num_watchers) values(?,?,?,?,?,?,?)",
+               [myHero.username, myHero.total_followers, myHero.total_following,
+                myHero.total_repositories, myHero.total_forks, myHero.total_stars, myHero.total_watchers])
+    connection.commit()
+
+
 
 
 #print('seed_user.username: %s\nseed_user.followers: %s\nseed_user.following: %s\nseed_user.repos: %s'
@@ -195,7 +243,8 @@ db.execute("""
             repo_name VARCHAR(256) NOT NULL DEFAULT '',
             watchers INT(10) UNSIGNED NULL,
             stars INT(10) UNSIGNED NULL,
-            forks INT(10) UNSIGNED NULL
+            forks INT(10) UNSIGNED NULL,
+            owner VARCHAR(256) NOT NULL DEFAULT ''
         )""")
 
 
@@ -212,9 +261,21 @@ db.execute("""
             url VARCHAR(256) NOT NULL PRIMARY KEY
         )""")
 
+db.execute("""
+        CREATE TABLE IF NOT EXISTS USERS (
+            username VARCHAR(256) NOT NULL DEFAULT '',
+            total_followers INT(10) UNSIGNED NULL,
+            total_following INT(10) UNSIGNED NULL,
+            total_repositories INT(10) UNSIGNED NULL,
+            total_forks INT(10) UNSIGNED NULL,
+            total_stars INT(10) UNSIGNED NULL,
+            total_watchers INT(10) UNSIGNED NULL
+        )""")
+connection.commit()
 
-print('GATE 2: populated seed_user\'s repository data, seed_user.repositories is a list of url strings'
-      '\nrepo_list is a list of simpleRepo objects')
+
+
+print('GATE 2: CREATED TABLES')
 
 # Input seed_user's repositories (info and owner relationshp) to DB
 # nevermind don't do this because it'll get caught later
@@ -244,6 +305,10 @@ for user in user_list:
     for tempRepo in repo_list:
         insert_repo_info(tempRepo)
     #print(user_list)
+    #populate superUser, insert into DB
+    myHero = superUser()
+    populate_superuser_statistics(user)
+    insert_superuser(myHero)
     user_list = extend_user_list_by_following(tempPopulatedUser, user_list)
 
 
