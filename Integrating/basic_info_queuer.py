@@ -191,30 +191,29 @@ def insert_repo_info(repo: simpleRepo):
     connection.commit()
 
 
-def populate_superuser_statistics(user: simpleUser):
-    myHero= superUser()
-    myHero.username = user.username
-    myHero.total_followers = len(user.followers)
-    myHero.total_following = len(user.following)
-    myHero.total_repositories = len(user.repositories)
+def populate_superuser_statistics(emptyHero: superUser, fullUser: simpleUser):
+    emptyHero.username = fullUser.username
+    emptyHero.total_followers = len(fullUser.followers)
+    emptyHero.total_following = len(fullUser.following)
+    emptyHero.total_repositories = len(fullUser.repositories)
     ## ToDo: Make this less brutal
     counter = 0
-    for repo in user.repositories:
-        counter = counter + repo.forks
-    myHero.total_forks = counter
+    for repo in fullUser.repositories:
+        counter = counter + int(repo.forks)
+    emptyHero.total_forks = counter
     counter = 0
-    for repo in user.repositories:
-        counter = counter + repo.stars
-    myHero.total_stars = counter
+    for repo in fullUser.repositories:
+        counter = counter + int(repo.stars)
+    emptyHero.total_stars = counter
     counter = 0
-    for repo in user.repositories:
-        counter = counter + repo.watching
-    myHero.total_watchers = counter
+    for repo in fullUser.repositories:
+        counter = counter + int(repo.watching)
+    emptyHero.total_watchers = counter
     return myHero
 
 
 def insert_superuser(myHero: superUser):
-    db.execute("insert into superUsers(username, num_followers, num_following, "
+    db.execute("insert into USERS(username, num_followers, num_following, "
                "num_repos, num_forks, num_stars, num_watchers) values(?,?,?,?,?,?,?)",
                [myHero.username, myHero.total_followers, myHero.total_following,
                 myHero.total_repositories, myHero.total_forks, myHero.total_stars, myHero.total_watchers])
@@ -264,12 +263,12 @@ db.execute("""
 db.execute("""
         CREATE TABLE IF NOT EXISTS USERS (
             username VARCHAR(256) NOT NULL DEFAULT '',
-            total_followers INT(10) UNSIGNED NULL,
-            total_following INT(10) UNSIGNED NULL,
-            total_repositories INT(10) UNSIGNED NULL,
-            total_forks INT(10) UNSIGNED NULL,
-            total_stars INT(10) UNSIGNED NULL,
-            total_watchers INT(10) UNSIGNED NULL
+            num_followers INT(10) UNSIGNED NULL,
+            num_following INT(10) UNSIGNED NULL,
+            num_repos INT(10) UNSIGNED NULL,
+            num_forks INT(10) UNSIGNED NULL,
+            num_stars INT(10) UNSIGNED NULL,
+            num_watchers INT(10) UNSIGNED NULL
         )""")
 connection.commit()
 
@@ -284,6 +283,7 @@ print('GATE 2: CREATED TABLES')
 #    db.execute("insert into OWNS(username, url) values(?,?)", [seed_user.username, repo.url])
 
 user_list = seed_user.following
+print('INITAL USER LIST')
 # Input seed_user's follow relationships to DB
 # yeah same don't do this primary key goof
 #for user in user_list:
@@ -293,22 +293,30 @@ user_list = seed_user.following
 for user in user_list:
     tempPopulatedUser = populate_simpleUser_from_username(user) # this will only be populated for this iter of loop
     #print_simpleUser_attributes(tempPopulatedUser)
+    print('POPULATED USER')
     for followedUser in tempPopulatedUser.following:
         db.execute("insert into FOLLOWS(username_following, username_followed) values(?,?)",
                    [tempPopulatedUser.username, followedUser])
         connection.commit()
+    print('UPDATE FOLLOWS')
     for ownedRepo in tempPopulatedUser.repositories:
         db.execute("insert into OWNS(username, url) values(?,?)", [tempPopulatedUser.username, ownedRepo])
         connection.commit()
+    print('UPDATE OWNS')
 
     repo_list = populate_user_repository_list(tempPopulatedUser)
+    print('POPULATED REPOS')
     for tempRepo in repo_list:
         insert_repo_info(tempRepo)
+    print('UPDATE REPOSITORIES')
     #print(user_list)
     #populate superUser, insert into DB
     myHero = superUser()
-    populate_superuser_statistics(user)
+    #populate_superuser requires a FULL user (user.repositories is a list of populated repos)
+    tempPopulatedUser.repositories = repo_list
+    populate_superuser_statistics(myHero, tempPopulatedUser)
     insert_superuser(myHero)
+    print('UPDATE USERS')
     user_list = extend_user_list_by_following(tempPopulatedUser, user_list)
 
 
