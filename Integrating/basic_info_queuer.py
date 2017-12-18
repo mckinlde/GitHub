@@ -246,7 +246,6 @@ db.execute("""
             owner VARCHAR(256) NOT NULL DEFAULT ''
         )""")
 
-
 db.execute("""
         CREATE TABLE IF NOT EXISTS FOLLOWS (
             mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,

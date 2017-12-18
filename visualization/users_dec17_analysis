@@ -1,0 +1,31 @@
+## first just a linear regression to try and predict forks
+import pandas as pd
+D = pd.read_csv("/Users/douglasmckinley/Downloads/users.csv", index_col=False)
+colnames = D.columns.values.tolist()
+#username, followers, following, repos, forks, stars, watchers
+Y = D[colnames[0]]
+X = D[colnames[1:5]]
+from sklearn import linear_model
+regr = linear_model.LinearRegression(fit_intercept=True).fit(X, Y)
+print("R^2=%0.3f" % regr.score(X, Y))
+print(f"intercept and coeff: {regr.intercept_} {regr.coef_}")
+
+## now let's show the plot with seaborn
+import matplotlib.pyplot as plt
+import seaborn as sns
+# x_column_name and y_column_name are in pandas dataframe df
+# are any other features a good predictor of forks?
+sns.lmplot(x=colnames[1], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+plt.show()
+
+sns.lmplot(x=colnames[2], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+plt.show()
+
+sns.lmplot(x=colnames[3], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+plt.show()
+
+sns.lmplot(x=colnames[4], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+plt.show()
+
+sns.lmplot(x=colnames[5], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+plt.show()
