@@ -35,8 +35,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 ## Now I'm gonna play games.
-## Are any individual features a good predictor of forks?
-##  No.  Interestingly not even #repos
+## Are any individual features a simple linear predictor of forks?
 
 # x_column_name and y_column_name are in pandas dataframe df
 sns.lmplot(x=colnames[1], y=colnames[0], data=D, fit_reg=True, truncate=True)
@@ -65,21 +64,27 @@ sns.lmplot(x=colnames[12], y=colnames[0], data=D, fit_reg=True, truncate=True)
 plt.show()
 sns.lmplot(x=colnames[13], y=colnames[0], data=D, fit_reg=True, truncate=True)
 plt.show()
-sns.lmplot(x=colnames[14], y=colnames[0], data=D, fit_reg=True, truncate=True)
+# this breaks IDK why
+#sns.lmplot(x=colnames[14], y=colnames[0], data=D, fit_reg=True, truncate=True)
+#plt.show()
+
+# watchers vs stars?
+sns.lmplot(x=colnames[2], y=colnames[3], data=D, fit_reg=True, truncate=True)
 plt.show()
 
 ## TODO: run supervised learning on all metrics to categorize as more forks than average, higher fork/repo ratio than average
 
 ## I wonder if I can get more out of a User's social habits...
 
-sns.lmplot(x=colnames[3], y=colnames[0], hue=colnames[6], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
+sns.lmplot(x=colnames[1], y=colnames[0], hue=colnames[12], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
 plt.show()
 
-sns.lmplot(x=colnames[3], y=colnames[0], hue=colnames[7], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
+sns.lmplot(x=colnames[1], y=colnames[0], hue=colnames[13], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
 plt.show()
 
-sns.lmplot(x=colnames[3], y=colnames[0], hue=colnames[8], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
-plt.show()
+# this also breaks IDK why
+#sns.lmplot(x=colnames[1], y=colnames[0], hue=colnames[14], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
+#plt.show()
 
 ## IngGTA makes the best predictors
 ## Missing: Ratio of people that follow mutually vs not, binary comparisons of that
