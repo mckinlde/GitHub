@@ -1,31 +1,87 @@
-## first just a linear regression to try and predict forks
+## First ya gotta have data.
+
 import pandas as pd
 D = pd.read_csv("/Users/douglasmckinley/Downloads/users.csv", index_col=False)
+
+#toDict?
 colnames = D.columns.values.tolist()
-#username, followers, following, repos, forks, stars, watchers
+#forks,ForksGTA,stars,watchers,starsGreaterwatchers,repos,reposGTA,forks_reposRatio,followers,following,ErIngRatio,ErGreaterIng,ErGTA,IngGTA,username
+#    0,       1,    2,       3,                   4,    5,       6,    7,         8,        9,       10,        11,          12,   13,    14,      15
+
+## first just a linear regression to try and predict forks
 Y = D[colnames[0]]
-X = D[colnames[1:5]]
+X = D[colnames[2:14]]
 from sklearn import linear_model
 regr = linear_model.LinearRegression(fit_intercept=True).fit(X, Y)
 print("R^2=%0.3f" % regr.score(X, Y))
 print(f"intercept and coeff: {regr.intercept_} {regr.coef_}")
+## hmm.  R^2 was 0.011 for x=[1:4,8], 0.047 for 1:8, 0.671 for 2:14
 
-## now let's show the plot with seaborn
+## Okay now one to predict a user has more forks than average
+Y = D[colnames[1]]
+X = D[colnames[2:14]]
+from sklearn import linear_model
+regr = linear_model.LinearRegression(fit_intercept=True).fit(X, Y)
+print("R^2=%0.3f" % regr.score(X, Y))
+print(f"intercept and coeff: {regr.intercept_} {regr.coef_}")
+## R^2 = 0.353 for 2:14
+
+## TODO: Okay but what about more repos than average?
+
+
+
+## now let's show the individual plots with seaborn
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+## Now I'm gonna play games.
+## Are any individual features a good predictor of forks?
+##  No.  Interestingly not even #repos
+
 # x_column_name and y_column_name are in pandas dataframe df
-# are any other features a good predictor of forks?
-sns.lmplot(x=colnames[1], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+sns.lmplot(x=colnames[1], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[2], y=colnames[0], data=D, fit_reg=True,truncate=True)
+plt.show()
+sns.lmplot(x=colnames[3], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[4], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[5], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[6], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[7], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[8], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[9], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[10], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[11], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[12], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[13], y=colnames[0], data=D, fit_reg=True, truncate=True)
+plt.show()
+sns.lmplot(x=colnames[14], y=colnames[0], data=D, fit_reg=True, truncate=True)
 plt.show()
 
-sns.lmplot(x=colnames[2], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+## TODO: run supervised learning on all metrics to categorize as more forks than average, higher fork/repo ratio than average
+
+## I wonder if I can get more out of a User's social habits...
+
+sns.lmplot(x=colnames[3], y=colnames[0], hue=colnames[6], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
 plt.show()
 
-sns.lmplot(x=colnames[3], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+sns.lmplot(x=colnames[3], y=colnames[0], hue=colnames[7], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
 plt.show()
 
-sns.lmplot(x=colnames[4], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
+sns.lmplot(x=colnames[3], y=colnames[0], hue=colnames[8], data=D, fit_reg=True, truncate=True, markers=["o", "x"], palette=sns.color_palette("muted"))
 plt.show()
 
-sns.lmplot(x=colnames[5], y=colnames[0], palette="RdBu", data=D, fit_reg=True)
-plt.show()
+## IngGTA makes the best predictors
+## Missing: Ratio of people that follow mutually vs not, binary comparisons of that
+
+## I wonder what histograms of repo's fork/star/watchers would look like
