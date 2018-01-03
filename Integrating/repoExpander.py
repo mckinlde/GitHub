@@ -92,6 +92,16 @@ REPO_URL_END = "?tab=repositories"
 
 
 # classes
+class simpleRepo:
+    def __init__(self, url, name, owner, watching, stars, forks):
+        self.url = url or ''
+        self.name = name or ''
+        self.owner = owner or ''
+        self.watching = watching or ''
+        self.stars = stars or ''
+        self.forks = forks or ''
+
+
 class simpleUser:
     # defines a simple github user class
     # simpleUser can spit out all of its own values, and populate them by scraping github with BeautifulSoup
@@ -105,8 +115,8 @@ class simpleUser:
 class superUser:
     #superuser is for statistics that are calculated, not scraped
     #functions should assume a simpleuser object with repositories as a list
-    #of populated simpleRepo objects
-    def __init__(self, username, total_followers, total_following, mutualFollows, total_repositories, total_forks, total_stars, total_watchers):
+    #of populated repository objects
+    def __init(self, username, total_followers, total_following, mutualFollows, total_repositories, total_forks, total_stars, total_watchers):
         self.username = username or ''
         self.total_followers = total_followers or ''
         self.total_following = total_following or ''
@@ -115,28 +125,6 @@ class superUser:
         self.total_forks = total_forks or ''
         self.total_stars = total_stars or ''
         self.total_watchers = total_watchers or ''
-
-
-class simpleRepo:
-    def __init__(self, url, name, owner, watching, stars, forks):
-        self.url = url or ''
-        self.name = name or ''
-        self.owner = owner or ''
-        self.watching = watching or ''
-        self.stars = stars or ''
-        self.forks = forks or ''
-
-
-class superRepo(simpleRepo):
-    def __init__(self, url, name, owner, watching, stars, forks, commits, branches, releases, contributors, lic, languages):
-        simpleRepo.__init__(self, url, name, owner, watching, stars, forks)
-        self.commits = commits
-        self.branches = branches
-        self.releases = releases
-        self.contributors = contributors
-        self.lic = lic
-        self.languages = languages
-
 
 
 
@@ -280,33 +268,6 @@ def insert_repo_info(repo: simpleRepo):
     connection.commit()
 
 
-def scrape_superRepo_numbers(soup: BeautifulSoup):
-    numbers = []
-    for item in soup.find_all("span", class_="num text-emphasized"):
-        numbers.append(item.text)
-    return numbers
-
-
-
-def populate_superrepo(emptyHero: superRepo, fullRepo: simpleRepo):
-    #url, name, owner, watching, stars, forks, commits, branches, releases, contributors, lic, languages):
-    emptyHero = superRepo(fullRepo.url, fullRepo.name, fullRepo.owner, fullRepo.watching, fullRepo.stars,
-                          fullRepo.forks, '', '', '', [], '', [])
-    soup = retrieve(emptyHero.url)
-    emptyHero.branches = scrape_superRepo_numbers(soup)
-    #emptyHero.releases = scrape_releases(soup)
-    #emptyHero.contributors = scrape_contribuors(soup)
-    #emptyHero.lic = scrape_lic(soup)
-    #emptyHero.languages = scrape_languages(soup)
-    return emptyHero
-
-
-testRepo = populate_repo_from_url('https://github.com/tensorflow/tensorflow')
-testSuperRepo = superRepo('', '', '', '', '', '', '', 'test', '', '', '', '')
-testSuperRepo = populate_superrepo(testSuperRepo, testRepo)
-print(testSuperRepo.branches)
-
-#['\n                26,534\n              ', '\n              18\n            ', '\n              43\n            ', '\n      1,231\n    ']
 
 
 
@@ -335,7 +296,7 @@ def populate_superuser_statistics(emptyHero: superUser, fullUser: simpleUser):
     for repo in fullUser.repositories:
         counter = counter + int(repo.watching)
     emptyHero.total_watchers = counter
-    return emptyHero
+    return myHero
 
 
 def insert_superuser(myHero: superUser):
@@ -401,80 +362,3 @@ connection.commit()
 
 
 print('GATE 2: CREATED TABLES')
-
-# Input seed_user's repositories (info and owner relationshp) to DB
-# nevermind don't do this because it'll get caught later
-#for repo in seed_repo_list:
-#    insert_repo_info(repo)
-#    db.execute("insert into OWNS(username, url) values(?,?)", [seed_user.username, repo.url])
-
-user_list = seed_user.following
-print('INITAL USER LIST')
-# Input seed_user's follow relationships to DB
-# yeah same don't do this primary key goof
-#for user in user_list:
-#    db.execute("insert into FOLLOWS(username_following, username_followed) values(?,?)",[seed_user.username, user])
-
-
-for user in user_list:
-    tempPopulatedUser = populate_simpleUser_from_username(user) # this will only be populated for this iter of loop
-    #print_simpleUser_attributes(tempPopulatedUser)
-    print('POPULATED USER')
-    for followedUser in tempPopulatedUser.following:
-        db.execute("insert into FOLLOWS(username_following, username_followed) values(?,?)",
-                   [tempPopulatedUser.username, followedUser])
-        connection.commit()
-    print('UPDATE FOLLOWS')
-    for ownedRepo in tempPopulatedUser.repositories:
-        db.execute("insert into OWNS(username, url) values(?,?)", [tempPopulatedUser.username, ownedRepo])
-        connection.commit()
-    print('UPDATE OWNS')
-
-    repo_list = populate_user_repository_list(tempPopulatedUser)
-    print('POPULATED REPOS')
-    for tempRepo in repo_list:
-        insert_repo_info(tempRepo)
-    print('UPDATE REPOSITORIES')
-    #print(user_list)
-    #populate superUser, insert into DB
-    myHero = superUser()
-    #populate_superuser requires a FULL user (user.repositories is a list of populated repos)
-    tempPopulatedUser.repositories = repo_list
-    populate_superuser_statistics(myHero, tempPopulatedUser)
-    insert_superuser(myHero)
-    print('UPDATE USERS')
-    user_list = extend_user_list_by_following(tempPopulatedUser, user_list)
-
-
-#print('repo values:\n url: %s\n name: %s\n owner: %s\n watching: %s\n stars: %s\n forks: %s\n'
-#      % (user_repos[1].url, user_repos[1].name, user_repos[1].owner, user_repos[1].watching, user_repos[1].stars, user_repos[0].forks))
-#
-# print('GATE 2')
-# import mysql.connector
-#
-#
-#
-#
-# db.execute("""
-#         CREATE TABLE IF NOT EXISTS REPOSITORIES (
-#             mid MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
-#             url VARCHAR(256) NOT NULL DEFAULT '',
-#             repo_name VARCHAR(256) NOT NULL DEFAULT '',
-#             username VARCHAR(256) NOT NULL DEFAULT '',
-#             watchers INT(10) UNSIGNED NULL,
-#             stars INT(10) UNSIGNED NULL,
-#             forks INT(10) UNSIGNED NULL
-#         )""")
-#
-#
-# def insert_repo_info(repo: simpleRepo):
-#     db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
-#                [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
-#
-#
-# for repo in user_repos:
-#     print('flag')
-#     db.execute("insert into REPOSITORIES(url, repo_name, username, watchers, stars, forks) values(?,?,?,?,?,?)",
-#                [repo.url, repo.name, repo.owner, repo.watching, repo.stars, repo.forks])
-#     connection.commit()
-
