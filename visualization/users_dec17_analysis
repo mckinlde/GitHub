@@ -44,6 +44,11 @@ import seaborn as sns
 # plt.show()
 # sns.lmplot(x=colnames[2], y=colnames[0], data=D, fit_reg=True,truncate=True)
 # plt.show()
+
+# use jointplot to get r and p values
+sns.jointplot(x=colnames[8], y=colnames[0], data=D, kind="reg")
+sns.jointplot(x=colnames[9], y=colnames[0], data=D, kind="reg")
+sns.jointplot(x=colnames[10], y=colnames[0], data=D, kind="reg")
 # sns.lmplot(x=colnames[3], y=colnames[0], data=D, fit_reg=True, truncate=True)
 # plt.show()
 # sns.lmplot(x=colnames[4], y=colnames[0], data=D, fit_reg=True, truncate=True)
@@ -108,7 +113,7 @@ plt.show()
 
 ## I wonder if Histograms can show me anything interesting
 fig, ax = plt.subplots()
-sns.distplot(pd.Series(D[colnames[5]]), rug=True, color='green', label=colnames[5], ax=ax)
+sns.distplot(pd.Series(D[colnames[3]]), rug=True, color='green', label=colnames[5], ax=ax)
 plt.legend() # make sure a legend shows up
 plt.show()
 #Displaying two histograms...

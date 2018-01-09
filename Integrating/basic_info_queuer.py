@@ -283,8 +283,9 @@ def insert_repo_info(repo: simpleRepo):
 def scrape_superRepo_numbers(soup: BeautifulSoup):
     numbers = []
     for item in soup.find_all("span", class_="num text-emphasized"):
-        number = re.sub(r"\s,", "", item.text)
-        numbers.append(number)
+        found = re.search('\0-9(.+?)\0-9', item.text).group(1)
+        numbers.append(found)
+    #['\n                26,534\n              ', '\n              18\n            ', '\n              43\n            ', '\n      1,231\n    ']
     return numbers
 
 
