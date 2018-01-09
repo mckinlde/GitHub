@@ -274,9 +274,9 @@ def populate_user_repository_list(seed_user: simpleUser):
     return result_list
 
 
-def insert_repo_info(repo: simpleRepo):
-    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks, owner) values(?,?,?,?,?,?)",
-               [repo.url, repo.name, repo.watching, repo.stars, repo.forks, repo.owner])
+def insert_repo_info(repo: superRepo):
+    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks, commits, branches, releases, contributors, owner) values(?,?,?,?,?,?,?,?,?,?)",
+               [repo.url, repo.name, repo.watching, repo.stars, repo.forks, repo.commits, repo.branches, repo.releases, repo.contributors, repo.owner])
     connection.commit()
 
 
@@ -289,22 +289,23 @@ def scrape_superRepo_numbers(soup: BeautifulSoup):
 
 
 
-def populate_superrepo(emptyHero: superRepo, fullRepo: simpleRepo):
+def populate_superrepo(fullRepo: simpleRepo):
     #url, name, owner, watching, stars, forks, commits, branches, releases, contributors, lic, languages):
     emptyHero = superRepo(fullRepo.url, fullRepo.name, fullRepo.owner, fullRepo.watching, fullRepo.stars,
                           fullRepo.forks, '', '', '', [], '', [])
     soup = retrieve(emptyHero.url)
-    emptyHero.branches = scrape_superRepo_numbers(soup)
-    #emptyHero.releases = scrape_releases(soup)
-    #emptyHero.contributors = scrape_contribuors(soup)
+    numbers = scrape_superRepo_numbers(soup)
+    emptyHero.commits = numbers[0]
+    emptyHero.branches = numbers[1]
+    emptyHero.releases = numbers[2]
+    emptyHero.contributors = numbers[3]
     #emptyHero.lic = scrape_lic(soup)
     #emptyHero.languages = scrape_languages(soup)
     return emptyHero
 
 
-testRepo = populate_repo_from_url('https://github.com/tensorflow/tensorflow')
-testSuperRepo = superRepo('', '', '', '', '', '', '', 'test', '', '', '', '')
-testSuperRepo = populate_superrepo(testSuperRepo, testRepo)
+testSimpleRepo = populate_repo_from_url('https://github.com/tensorflow/tensorflow')
+testSuperRepo = populate_superrepo(testSimpleRepo)
 print(testSuperRepo.branches)
 
 #['\n                26,534\n              ', '\n              18\n            ', '\n              43\n            ', '\n      1,231\n    ']
@@ -370,6 +371,10 @@ db.execute("""
             watchers INT(10) UNSIGNED NULL,
             stars INT(10) UNSIGNED NULL,
             forks INT(10) UNSIGNED NULL,
+            commits INT(10) UNSIGNED NULL,
+            branches INT(10) UNSIGNED NULL,
+            releases INT(10) UNSIGNED NULL,
+            contributors INT(10) UNSIGNED NULL,
             owner VARCHAR(256) NOT NULL DEFAULT ''
         )""")
 
@@ -434,7 +439,8 @@ for user in user_list:
     repo_list = populate_user_repository_list(tempPopulatedUser)
     print('POPULATED REPOS')
     for tempRepo in repo_list:
-        insert_repo_info(tempRepo)
+        superTemp = populate_superrepo(tempRepo)
+        insert_repo_info(superTemp)
     print('UPDATE REPOSITORIES')
     #print(user_list)
     #populate superUser, insert into DB
