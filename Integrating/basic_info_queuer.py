@@ -443,12 +443,13 @@ for user in user_list:
     for tempRepo in repo_list:
         #tempSimpleRepo = populate_repo_from_url(tempRepo.url)
         print(tempRepo)
-        superTemp = populate_superrepo(tempRepo)
-        ## Bug:  contributors value isn't populated, resolve with 0 as when cleaning data all repos obviously have at least 1 contributor
-        if superTemp.contributors == '':
-            superTemp.contributors = 0
         try:
-            insert_repo_info(superTemp)
+                superTemp = populate_superrepo(tempRepo)
+            ## Bug:  contributors value isn't populated, resolve with 0 as when cleaning data all repos obviously have at least 1 contributor
+            if superTemp.contributors == '':
+                superTemp.contributors = 0
+            try:
+                insert_repo_info(superTemp)
         except:
             print('failed to add: ' + superTemp.name + 'by' + superTemp.owner)
     print('POPULATED REPOS')
