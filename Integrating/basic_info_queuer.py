@@ -447,7 +447,10 @@ for user in user_list:
         ## Bug:  contributors value isn't populated, resolve with 0 as when cleaning data all repos obviously have at least 1 contributor
         if superTemp.contributors == '':
             superTemp.contributors = 0
-        insert_repo_info(superTemp)
+        try:
+            insert_repo_info(superTemp)
+        except:
+            print('failed to add: ' + superTemp.name + 'by' + superTemp.owner)
     print('POPULATED REPOS')
     #print(user_list)
     #populate superUser, insert into DB
