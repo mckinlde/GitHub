@@ -292,7 +292,7 @@ def scrape_superRepo_numbers(soup: BeautifulSoup):
 def populate_superrepo(fullRepo: simpleRepo):
     #url, name, owner, watching, stars, forks, commits, branches, releases, contributors, lic, languages):
     emptyHero = superRepo(fullRepo.url, fullRepo.name, fullRepo.owner, fullRepo.watching, fullRepo.stars,
-                          fullRepo.forks, '', '', '', [], '', [])
+                          fullRepo.forks, '', '', '', '', '', [])
     soup = retrieve(emptyHero.url)
     numbers = scrape_superRepo_numbers(soup)
     emptyHero.commits = numbers[0]
@@ -306,7 +306,7 @@ def populate_superrepo(fullRepo: simpleRepo):
 
 testSimpleRepo = populate_repo_from_url('https://github.com/tensorflow/tensorflow')
 testSuperRepo = populate_superrepo(testSimpleRepo)
-print(testSuperRepo.branches)
+print(testSuperRepo.contributors)
 
 #['\n                26,534\n              ', '\n              18\n            ', '\n              43\n            ', '\n      1,231\n    ']
 
@@ -437,16 +437,24 @@ for user in user_list:
     print('UPDATE OWNS')
 
     repo_list = populate_user_repository_list(tempPopulatedUser)
-    print('POPULATED REPOS')
+
+    print('UPDATE REPO LIST')
+    tempPopulatedUser.repositories = repo_list
     for tempRepo in repo_list:
+        #tempSimpleRepo = populate_repo_from_url(tempRepo.url)
+        print(tempRepo)
         superTemp = populate_superrepo(tempRepo)
+        ## Bug:  contributors value isn't populated, resolve with 0 as when cleaning data all repos obviously have at least 1 contributor
+        if superTemp.contributors == '':
+            superTemp.contributors = 0
         insert_repo_info(superTemp)
-    print('UPDATE REPOSITORIES')
+    print('POPULATED REPOS')
     #print(user_list)
     #populate superUser, insert into DB
-    myHero = superUser()
+    myHero = superUser('', '', '', '', '', '','', '')
     #populate_superuser requires a FULL user (user.repositories is a list of populated repos)
-    tempPopulatedUser.repositories = repo_list
+
+    print('tempPopulatedUser is now a FULL user')
     populate_superuser_statistics(myHero, tempPopulatedUser)
     insert_superuser(myHero)
     print('UPDATE USERS')
