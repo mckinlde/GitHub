@@ -1,0 +1,34 @@
+##
+# This script automates the process of examining multiple columns
+# of numerical data for simple linear regressions.
+#
+# Based on basic_users_dec17_analysis.py
+##
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+## TODO: define plot object
+
+# Assumes all colums in CSV are labelled continuous variables
+def main(input_csv: str):
+    # Take in CSV file, columns w/headers
+    D = pd.read_csv(input_csv, index_col=False)
+    colnames = D.columns.values.tolist()
+    # Automatically draw all possible regression lines, save their R^2 and axes
+    plots = []
+    for i in colnames:
+        for j in colnames:
+            sns.lmplot(x=colnames[i], y=colnames[j], data=D, fit_reg=True, truncate=True)
+            #r2 = ?
+            x_col_name = D.title(colnames[1])
+            plots.append(plot(r2, x_col_name, x_col_index, y_col_name, y_col_index))
+    # Sort by highest R^2
+    for plot in plots:
+
+    # Display in order
+
+
+input_csv = input('Input CSV filepath: ')
+main(input_csv)

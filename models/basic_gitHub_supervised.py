@@ -1,3 +1,9 @@
+## Take in CSV file, columns w/headers
+## Automatically draw all possible regression lines
+## Sort by highest R^2
+## Display in order
+
+
 import pandas as pd
 import numpy as np
 import os
