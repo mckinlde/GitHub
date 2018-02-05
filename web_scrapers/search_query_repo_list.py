@@ -1,4 +1,4 @@
-## Search Query Repo List
+## gets list of repo links that appear in github search query
 
 ## Include
 

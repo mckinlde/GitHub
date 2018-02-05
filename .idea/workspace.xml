@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
+    <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="Scrapes commits to a repo as time-series data with properties">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/commits_on_repo.py" afterPath="$PROJECT_DIR$/web_scrapers/commits_on_repo.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" afterPath="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,17 +26,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_query_repo_list.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search_query_repo_list.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+            <state relative-caret-position="15">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commits_on_repo.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="commits_on_repo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web_scrapers/commits_on_repo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -110,11 +110,11 @@
         <option value="$PROJECT_DIR$/models/basic_gitHub_supervised.py" />
         <option value="$PROJECT_DIR$/models/ForksAB.py" />
         <option value="$PROJECT_DIR$/cleaning/55_followers.py" />
-        <option value="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" />
         <option value="$PROJECT_DIR$/models/automated_linear_regression.py" />
         <option value="$PROJECT_DIR$/models/csv_regressiomatic" />
         <option value="$PROJECT_DIR$/visualization/csv_regressiomatic" />
         <option value="$PROJECT_DIR$/web_scrapers/commits_on_repo.py" />
+        <option value="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" />
       </list>
     </option>
   </component>
@@ -532,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517824449692</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Scrapes commits to a repo as time-series data with properties">
+      <created>1517824606436</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1517824606436</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -592,7 +599,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="get_header_info collects # of watchers, stars, and forks, stored them in a dict called 'info'" />
     <MESSAGE value="renamed repo_commit_history to repo_basic_info" />
     <MESSAGE value="user_repos gets links to all the public repos a user owns, requires username" />
     <MESSAGE value="user_following populates a list of all the usernames a user follows" />
@@ -617,7 +623,8 @@
     <MESSAGE value="Created burning_dumpsters, for old_trash." />
     <MESSAGE value="csv_regressomatic automates simple linear regression on CSVs of continuous variables" />
     <MESSAGE value="automates simple linear regression on CSVs of continuous variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="automates simple linear regression on CSVs of continuous variables" />
+    <MESSAGE value="Scrapes commits to a repo as time-series data with properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scrapes commits to a repo as time-series data with properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -971,18 +978,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/commits_on_repo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
