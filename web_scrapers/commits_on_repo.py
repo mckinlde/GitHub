@@ -1,2 +1,1 @@
-## Scrapes commits to a repo as time-series data with properties
-
+## Scrapes links to all commits on a repo, sorted by most recent first
