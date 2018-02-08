@@ -140,6 +140,8 @@ def populate_superrepo(fullRepo: simpleRepo):
     emptyHero.contributors = numbers[3]
     #emptyHero.lic = scrape_lic(soup)
     #emptyHero.languages = scrape_languages(soup)
+
+
     return emptyHero
 
 
