@@ -4,6 +4,8 @@
 #
 # Based on basic_users_dec17_analysis.py
 ##
+
+## Imports
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -11,6 +13,13 @@ import seaborn as sns
 
 ## TODO: define plot object
 
+## Helpers
+# Sort a list of plots by highest r2
+# plots is list of tuples, first elem in tuple is r2
+def sort_by_highest_r2(plots: []):
+    return plots
+
+## Main()
 # Assumes all colums in CSV are labelled continuous variables
 def main(input_csv: str):
     # Take in CSV file, columns w/headers
@@ -22,12 +31,20 @@ def main(input_csv: str):
         for j in colnames:
             sns.lmplot(x=colnames[i], y=colnames[j], data=D, fit_reg=True, truncate=True)
             #r2 = ?
-            x_col_name = D.title(colnames[1])
-            plots.append(plot(r2, x_col_name, x_col_index, y_col_name, y_col_index))
+            x_col_name = D.title(colnames[i])
+            x_col_index = i
+            y_col_name = D.title(colnames[j])
+            y_col_index = j
+            plots.append((r2, x_col_name, x_col_index, y_col_name, y_col_index))
     # Sort by highest R^2
-    for plot in plots:
-
+    plots = sort_by_highest_r2(plots)
     # Display in order
+    for plot in plots:
+        sns.lmplot(x=colnames[x_col_index], y=colnames[y_col_index], data=D, fit_reg=True, truncate=True)
+        plt.show
+        uinput = input('Nest: n, Quit: q\n')
+        if uinput == 'q':
+            break
 
 
 input_csv = input('Input CSV filepath: ')
