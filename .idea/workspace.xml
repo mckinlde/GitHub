@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="Scrapes commits to a repo as time-series data with properties">
+    <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/GitHub.iml" afterPath="$PROJECT_DIR$/.idea/GitHub.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" afterPath="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" />
     </list>
@@ -14,33 +16,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="csv_regressiomatic" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualization/csv_regressiomatic">
+      <file leaf-file-name="search_query_repo_list.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="150">
+              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
               <folding>
-                <element signature="e#166#185#0" expanded="true" />
+                <element signature="e#921#934#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_query_repo_list.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
+      <file leaf-file-name="basic_info_queuer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Integrating/basic_info_queuer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="commits_on_repo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web_scrapers/commits_on_repo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="61">
+              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="90" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -67,6 +59,7 @@
       <find>super:</find>
       <find>palette=&quot;RdBu&quot;,</find>
       <find>colnames[8]</find>
+      <find>populate_repo_from_url</find>
     </findStrings>
     <replaceStrings>
       <replace>base_url</replace>
@@ -78,6 +71,7 @@
       <replace>myHero.</replace>
       <replace>myHero:</replace>
       <replace>colnames[1]</replace>
+      <replace>populate_repo_from_soup</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -150,22 +144,7 @@
             <path>
               <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
               <item name="GitHub" type="462c0819:PsiDirectoryNode" />
-              <item name="cleaning" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GitHub" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GitHub" type="462c0819:PsiDirectoryNode" />
               <item name="Integrating" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GitHub" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GitHub" type="b2602c69:ProjectViewProjectNode" />
@@ -186,13 +165,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -212,7 +192,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ForksAB">
+  <component name="RunManager" selected="Python.search_query_repo_list">
     <configuration name="ForksAB" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -264,19 +244,19 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="scraper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="search_query_repo_list" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Integrating" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web_scrapers" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="GitHub" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Integrating/scraper.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -300,18 +280,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
-      <item index="1" class="java.lang.String" itemvalue="Python.scraper" />
-      <item index="2" class="java.lang.String" itemvalue="Python.users_dec17_analysis" />
-      <item index="3" class="java.lang.String" itemvalue="Python.basic_gitHub_supervised" />
-      <item index="4" class="java.lang.String" itemvalue="Python.ForksAB" />
+      <item index="1" class="java.lang.String" itemvalue="Python.users_dec17_analysis" />
+      <item index="2" class="java.lang.String" itemvalue="Python.basic_gitHub_supervised" />
+      <item index="3" class="java.lang.String" itemvalue="Python.ForksAB" />
+      <item index="4" class="java.lang.String" itemvalue="Python.search_query_repo_list" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ForksAB" />
-        <item index="1" class="java.lang.String" itemvalue="Python.basic_gitHub_supervised" />
-        <item index="2" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
-        <item index="3" class="java.lang.String" itemvalue="Python.users_dec17_analysis" />
-        <item index="4" class="java.lang.String" itemvalue="Python.scraper" />
+        <item index="0" class="java.lang.String" itemvalue="Python.search_query_repo_list" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ForksAB" />
+        <item index="2" class="java.lang.String" itemvalue="Python.basic_gitHub_supervised" />
+        <item index="3" class="java.lang.String" itemvalue="Python.basic_info_queuer" />
+        <item index="4" class="java.lang.String" itemvalue="Python.users_dec17_analysis" />
       </list>
     </recent_temporary>
   </component>
@@ -539,31 +519,63 @@
       <option name="project" value="LOCAL" />
       <updated>1517824606436</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="scrapes list of repos that appear in search query">
+      <created>1518048404302</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1518048404302</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Turning scrape_repos_from_query into functional form">
+      <created>1518050913880</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1518050913880</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Turning scrape_repos_from_query into functional form">
+      <created>1518050927100</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1518050927100</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="161" y="23" width="1245" height="824" extended-state="0" />
+    <frame x="0" y="27" width="1280" height="709" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21445782" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4152941" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32845744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3846154" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39839572" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48822606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4152941" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32845744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21445782" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39839572" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -599,8 +611,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="renamed repo_commit_history to repo_basic_info" />
-    <MESSAGE value="user_repos gets links to all the public repos a user owns, requires username" />
     <MESSAGE value="user_following populates a list of all the usernames a user follows" />
     <MESSAGE value="user_followers populates a list of all the usernames a user is followed by" />
     <MESSAGE value="created simpleRepo and simpleUser classes" />
@@ -624,7 +634,9 @@
     <MESSAGE value="csv_regressomatic automates simple linear regression on CSVs of continuous variables" />
     <MESSAGE value="automates simple linear regression on CSVs of continuous variables" />
     <MESSAGE value="Scrapes commits to a repo as time-series data with properties" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scrapes commits to a repo as time-series data with properties" />
+    <MESSAGE value="scrapes list of repos that appear in search query" />
+    <MESSAGE value="Turning scrape_repos_from_query into functional form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Turning scrape_repos_from_query into functional form" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,6 +646,11 @@
           <line>17</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py</url>
+          <line>182</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -642,25 +659,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="28" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web_scrapers/Burning Dumpster/user_following.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="19" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_scrapers/Burning Dumpster/user_followers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="29" column="54" lean-forward="false" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/Burning Dumpster/user_followers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -882,7 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py" />
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/OpenSSL/SSL.py" />
     <entry file="file://$PROJECT_DIR$/web_scrapers/Burning Dumpster/repo_contributors.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -898,19 +900,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/users_dec17.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4567">
-          <caret line="305" column="0" lean-forward="true" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/users_dec17.csv" />
     <entry file="file://$PROJECT_DIR$/cleaning/55_followers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,9 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <element signature="e#1#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -928,9 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#136#155#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -946,24 +934,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Integrating/basic_info_queuer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5685">
-          <caret line="436" column="24" lean-forward="false" selection-start-line="436" selection-start-column="24" selection-end-line="436" selection-end-column="24" />
-          <folding>
-            <element signature="e#6048#6061#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visualization/users_dec17_analysis">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="42" column="79" lean-forward="true" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="79" />
+        <state relative-caret-position="179">
+          <caret line="55" column="24" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -972,9 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#166#185#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -982,15 +956,48 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integrating/basic_info_queuer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="90" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="1598" column="0" lean-forward="false" selection-start-line="1598" selection-start-column="0" selection-end-line="1598" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3422">
+          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="1" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="150">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding>
+            <element signature="e#921#934#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

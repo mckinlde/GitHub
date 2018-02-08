@@ -1,3 +1,18 @@
+# After 990 Java repos:
+# * https://github.com/search?p=100&q=language%3AJava&type=Repositories&utf8=%E2%9C%93
+# /Users/studentuser/anaconda3/lib/python3.6/site-packages/urllib3/connectionpool.py:858: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+#   InsecureRequestWarning)
+# Traceback (most recent call last):
+#   File "/Users/studentuser/PycharmProjects/GitHub/web_scrapers/search_query_repo_list.py", line 169, in <module>
+#     links, nextPage = get_links(nextPage)
+#   File "/Users/studentuser/PycharmProjects/GitHub/web_scrapers/search_query_repo_list.py", line 155, in get_links
+#     next_page = next_url[0].get('href')
+# IndexError: list index out of range
+#
+# Process finished with exit code 1
+
+
+
 ## gets list of repo links that appear in github search query
 import string
 from time import sleep
@@ -6,6 +21,7 @@ from urllib.parse import urljoin
 from random import randint
 import re
 import requests
+import mysql.connector
 
 BASE_URL = "https://github.com/"
 FOLLOWING_URL_END = "?tab=following"
@@ -38,21 +54,21 @@ connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo"
 db = connection.cursor(prepared=True)
 
 db.execute("""
-        CREATE TABLE IF NOT EXISTS PYTHON_REPOS (
+        CREATE TABLE IF NOT EXISTS JAVA_REPOS (
             url VARCHAR(256) NOT NULL PRIMARY KEY,
             repo_name VARCHAR(256) NOT NULL DEFAULT '',
-            watchers INT(10) UNSIGNED NULL,
-            stars INT(10) UNSIGNED NULL,
-            forks INT(10) UNSIGNED NULL,
-            commits INT(10) UNSIGNED NULL,
-            branches INT(10) UNSIGNED NULL,
-            releases INT(10) UNSIGNED NULL,
-            contributors INT(10) UNSIGNED NULL,
+            watchers VARCHAR(256) NOT NULL DEFAULT '',
+            stars VARCHAR(256) NOT NULL DEFAULT '',
+            forks VARCHAR(256) NOT NULL DEFAULT '',
+            commits VARCHAR(256) NOT NULL DEFAULT '',
+            branches VARCHAR(256) NOT NULL DEFAULT '',
+            releases VARCHAR(256) NOT NULL DEFAULT '',
+            contributors VARCHAR(256) NOT NULL DEFAULT '',
             owner VARCHAR(256) NOT NULL DEFAULT ''
         )""")
 connection.commit()
 
-base_soup = 'https://github.com/search?utf8=%E2%9C%93&q=language%3APython&type='
+base_soup = 'https://github.com/search?utf8=✓&q=language%3AJava&type='
 url_to_join = "https://github.com"
 links=[]
 
@@ -67,28 +83,7 @@ def retrieve(url: str):
 
     return soup
 
-def get_links(url):
-    # Get all links to repos from current result page
-    soup = retrieve(url)
-    for i in soup.find_all('a'):
-        if (i.get('class') and (i.get('class'))[0] =="v-align-middle"):
-            full_url = "https://github.com" + i.get('href')
-            links.append(full_url)
 
-    sleep(5)
-
-    next_url = soup.find_all("a", class_ ="next_page")
-
-    while len(next_url)!=0:
-        next_page = next_url[0].get('href')
-        next_page_url = urljoin(url_to_join,next_page)
-        get_links(next_page_url)
-
-    return links
-
-
-j = get_links(base_soup)
-print(j)
 
 def get_header_info(soup: str):
     #gather all the basic information obtainable from the repo header, # of people watching, # stars, # forks
@@ -101,6 +96,14 @@ def get_header_info(soup: str):
     info.append(tags[1]['aria-label'][0:tags[1]['aria-label'].find(" ")])
     info.append(tags[2]['aria-label'][0:tags[2]['aria-label'].find(" ")])
     return info
+
+def get_username_reponame_from_url(url: str):
+    # 'https://github.com/USERNAME/REPONAME'
+    #                  18^^19      ^past_username+1
+    past_username = url.rfind('/')
+    username = url[19:past_username]
+    reponame = url[past_username+1:]
+    return [username, reponame]
 
 
 def populate_repo_from_url(url: str):
@@ -140,13 +143,45 @@ def populate_superrepo(fullRepo: simpleRepo):
     emptyHero.contributors = numbers[3]
     #emptyHero.lic = scrape_lic(soup)
     #emptyHero.languages = scrape_languages(soup)
-
-
     return emptyHero
 
 
 def insert_repo_info(repo: superRepo):
-    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks, commits, branches, releases, contributors, owner) values(?,?,?,?,?,?,?,?,?,?)",
+    ## mysql.connector.errors.DatabaseError: 1265 (01000): Data truncated for column 'commits' at row 1
+
+    db.execute("insert into JAVA_REPOS(url, repo_name, watchers, stars, forks, commits, branches, releases, contributors, owner) values(?,?,?,?,?,?,?,?,?,?)",
                [repo.url, repo.name, repo.watching, repo.stars, repo.forks, repo.commits, repo.branches, repo.releases, repo.contributors, repo.owner])
     connection.commit()
+
+
+def get_links(url):
+    # Get all links to repos from current result page
+    links = []
+    soup = retrieve(url)
+    for i in soup.find_all('a'):
+        if (i.get('class') and (i.get('class'))[0] =="v-align-middle"):
+            full_url = "https://github.com" + i.get('href')
+            links.append(full_url)
+
+    sleep(5)
+
+    next_url = soup.find_all("a", class_ ="next_page")
+
+    next_page = next_url[0].get('href')
+    next_page_url = urljoin(url_to_join,next_page)
+
+    return links, next_page_url
+
+
+links, nextPage = get_links(base_soup)
+print(links)
+
+while len(nextPage)!=0:
+    for link in links:
+        simpleR = populate_repo_from_url(link)
+        superR = populate_superrepo(simpleR)
+        insert_repo_info(superR)
+    links, nextPage = get_links(nextPage)
+
+print("End of query results!")
 
