@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 from random import randint
 import re
 import requests
+import mysql.connector
 
 BASE_URL = "https://github.com/"
 FOLLOWING_URL_END = "?tab=following"
@@ -67,28 +68,7 @@ def retrieve(url: str):
 
     return soup
 
-def get_links(url):
-    # Get all links to repos from current result page
-    soup = retrieve(url)
-    for i in soup.find_all('a'):
-        if (i.get('class') and (i.get('class'))[0] =="v-align-middle"):
-            full_url = "https://github.com" + i.get('href')
-            links.append(full_url)
 
-    sleep(5)
-
-    next_url = soup.find_all("a", class_ ="next_page")
-
-    while len(next_url)!=0:
-        next_page = next_url[0].get('href')
-        next_page_url = urljoin(url_to_join,next_page)
-        get_links(next_page_url)
-
-    return links
-
-
-j = get_links(base_soup)
-print(j)
 
 def get_header_info(soup: str):
     #gather all the basic information obtainable from the repo header, # of people watching, # stars, # forks
@@ -101,6 +81,14 @@ def get_header_info(soup: str):
     info.append(tags[1]['aria-label'][0:tags[1]['aria-label'].find(" ")])
     info.append(tags[2]['aria-label'][0:tags[2]['aria-label'].find(" ")])
     return info
+
+def get_username_reponame_from_url(url: str):
+    # 'https://github.com/USERNAME/REPONAME'
+    #                  18^^19      ^past_username+1
+    past_username = url.rfind('/')
+    username = url[19:past_username]
+    reponame = url[past_username+1:]
+    return [username, reponame]
 
 
 def populate_repo_from_url(url: str):
@@ -140,13 +128,46 @@ def populate_superrepo(fullRepo: simpleRepo):
     emptyHero.contributors = numbers[3]
     #emptyHero.lic = scrape_lic(soup)
     #emptyHero.languages = scrape_languages(soup)
-
-
     return emptyHero
 
 
 def insert_repo_info(repo: superRepo):
-    db.execute("insert into REPOSITORIES(url, repo_name, watchers, stars, forks, commits, branches, releases, contributors, owner) values(?,?,?,?,?,?,?,?,?,?)",
+    db.execute("insert into PYTHON_REPOS(url, repo_name, watchers, stars, forks, commits, branches, releases, contributors, owner) values(?,?,?,?,?,?,?,?,?,?)",
                [repo.url, repo.name, repo.watching, repo.stars, repo.forks, repo.commits, repo.branches, repo.releases, repo.contributors, repo.owner])
     connection.commit()
 
+
+def get_links(url):
+    # Get all links to repos from current result page
+    links = []
+    soup = retrieve(url)
+    for i in soup.find_all('a'):
+        if (i.get('class') and (i.get('class'))[0] =="v-align-middle"):
+            full_url = "https://github.com" + i.get('href')
+            links.append(full_url)
+
+    sleep(5)
+
+    next_url = soup.find_all("a", class_ ="next_page")
+
+    next_page = next_url[0].get('href')
+    next_page_url = urljoin(url_to_join,next_page)
+
+    return links, next_page_url
+
+
+links, nextPage = get_links(base_soup)
+print(links)
+
+while len(nextPage)!=0:
+    for link in links:
+        simpleR = populate_repo_from_url(link)
+        superR = populate_superrepo(simpleR)
+        insert_repo_info(superR)
+    links, nextPage = get_links(nextPage)
+
+print("End of query results!")
+
+
+#while len(next_url)!=0:
+#    get_links(next_page_url)
