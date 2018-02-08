@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="57fb8b50-a7bb-4dc7-a088-5d0bc3a4b002" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visualization/csv_regressiomatic" afterPath="$PROJECT_DIR$/visualization/csv_regressiomatic" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" afterPath="$PROJECT_DIR$/web_scrapers/search_query_repo_list.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="search_query_repo_list.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1391">
-              <caret line="168" column="28" lean-forward="false" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
+            <state relative-caret-position="288">
+              <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
               <folding>
                 <element signature="e#62#75#0" expanded="true" />
               </folding>
@@ -653,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517824648866</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="sear_query_repo_list ready for scraping run">
+      <created>1518053020645</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1518053020645</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -663,7 +669,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21445782" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41489363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41489363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32845744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -713,7 +719,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="user_repos gets links to all the public repos a user owns, requires username" />
     <MESSAGE value="user_following populates a list of all the usernames a user follows" />
     <MESSAGE value="user_followers populates a list of all the usernames a user is followed by" />
     <MESSAGE value="created simpleRepo and simpleUser classes" />
@@ -738,7 +743,8 @@
     <MESSAGE value="automates simple linear regression on CSVs of continuous variables" />
     <MESSAGE value="Scrapes commits to a repo as time-series data with properties" />
     <MESSAGE value="gets list of repo links that appear in github search query" />
-    <option name="LAST_COMMIT_MESSAGE" value="gets list of repo links that appear in github search query" />
+    <MESSAGE value="sear_query_repo_list ready for scraping run" />
+    <option name="LAST_COMMIT_MESSAGE" value="sear_query_repo_list ready for scraping run" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1092,8 +1098,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web_scrapers/search_query_repo_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1391">
-          <caret line="168" column="28" lean-forward="false" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
+        <state relative-caret-position="288">
+          <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding>
             <element signature="e#62#75#0" expanded="true" />
           </folding>

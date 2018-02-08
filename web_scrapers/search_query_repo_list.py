@@ -169,5 +169,3 @@ while len(nextPage)!=0:
 print("End of query results!")
 
 
-#while len(next_url)!=0:
-#    get_links(next_page_url)
