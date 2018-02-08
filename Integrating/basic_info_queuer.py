@@ -453,7 +453,7 @@ for user in user_list:
             except:
                 print('failed to insert: ' + superTemp.name + 'by' + superTemp.owner)
         except:
-            print('failed to populate: ' + tempRepo)
+            print('failed to populate: ' + tempRepo.name)
     print('POPULATED REPOS')
     #print(user_list)
     #populate superUser, insert into DB

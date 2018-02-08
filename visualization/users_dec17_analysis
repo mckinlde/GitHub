@@ -49,6 +49,11 @@ import seaborn as sns
 sns.jointplot(x=colnames[8], y=colnames[0], data=D, kind="reg")
 sns.jointplot(x=colnames[9], y=colnames[0], data=D, kind="reg")
 sns.jointplot(x=colnames[10], y=colnames[0], data=D, kind="reg")
+for
+    for
+        col x
+            col y
+                plt.show
 # sns.lmplot(x=colnames[3], y=colnames[0], data=D, fit_reg=True, truncate=True)
 # plt.show()
 # sns.lmplot(x=colnames[4], y=colnames[0], data=D, fit_reg=True, truncate=True)
