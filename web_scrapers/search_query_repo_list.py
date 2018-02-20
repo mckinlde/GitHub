@@ -132,6 +132,10 @@ def scrape_superRepo_numbers(soup: BeautifulSoup):
 
 
 def populate_superrepo(fullRepo: simpleRepo):
+
+    #TODO: Sometimes there is a 4th number of lic, sometimes there isn't.
+    # When there is it offsets languages by 1 column in DB'
+
     #url, name, owner, watching, stars, forks, commits, branches, releases, contributors, lic, languages):
     emptyHero = superRepo(fullRepo.url, fullRepo.name, fullRepo.owner, fullRepo.watching, fullRepo.stars,
                           fullRepo.forks, '', '', '', '', '', [])
@@ -141,6 +145,9 @@ def populate_superrepo(fullRepo: simpleRepo):
     emptyHero.branches = numbers[1]
     emptyHero.releases = numbers[2]
     emptyHero.contributors = numbers[3]
+
+    #TODO: these lines are commented when bug occurs.
+
     #emptyHero.lic = scrape_lic(soup)
     #emptyHero.languages = scrape_languages(soup)
     return emptyHero
