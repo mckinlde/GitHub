@@ -54,7 +54,7 @@ connection = mysql.connector.connect(host="localhost", port=3306, user="semdemo"
 db = connection.cursor(prepared=True)
 
 db.execute("""
-        CREATE TABLE IF NOT EXISTS JAVA_REPOS (
+        CREATE TABLE IF NOT EXISTS PYTHON_REPOS_2 (
             url VARCHAR(256) NOT NULL PRIMARY KEY,
             repo_name VARCHAR(256) NOT NULL DEFAULT '',
             watchers VARCHAR(256) NOT NULL DEFAULT '',
@@ -68,7 +68,7 @@ db.execute("""
         )""")
 connection.commit()
 
-base_soup = 'https://github.com/search?utf8=✓&q=language%3AJava&type='
+base_soup = 'https://github.com/search?utf8=✓&q=language%3APython&type='
 url_to_join = "https://github.com"
 links=[]
 
